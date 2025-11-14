@@ -84,7 +84,7 @@ jobs:
           echo "=== Disk space before Docker build ==="
           df -h
           echo "=== Docker info ==="
-          docker info | grep -i "data space"
+          docker info || true
       
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
