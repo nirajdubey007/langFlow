@@ -37,9 +37,9 @@ COPY src /app/src
 
 # Build frontend
 WORKDIR /app/src/frontend
-# Reduce Node.js memory limit to 1.5GB to save disk space
-ENV NODE_OPTIONS="--max-old-space-size=1536"
-RUN npm ci --prefer-offline --no-audit --ignore-scripts && \
+# Set Node.js memory limit to 2GB (balance between build success and disk usage)
+ENV NODE_OPTIONS="--max-old-space-size=2048"
+RUN npm ci --prefer-offline --no-audit && \
     npm run build && \
     mkdir -p /app/src/backend/langflow/frontend && \
     cp -r build /app/src/backend/langflow/frontend && \
