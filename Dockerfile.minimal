@@ -1,0 +1,43 @@
+# Minimal Dockerfile for Langflow testing
+FROM python:3.12.3-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy dependency files
+COPY pyproject.toml uv.lock README.md ./
+COPY src/backend/base/pyproject.toml src/backend/base/uv.lock ./src/backend/base/
+
+# Install uv package manager
+RUN pip install uv
+
+# Install Python dependencies (without dev dependencies to save space)
+RUN uv sync --frozen --no-install-project --no-dev
+
+# Copy source code
+COPY src/backend/base/langflow ./langflow
+
+# Set environment variables
+ENV LANGFLOW_HOST=0.0.0.0
+ENV LANGFLOW_PORT=7860
+ENV LANGFLOW_AUTO_LOGIN=true
+ENV LANGFLOW_SUPERUSER=admin
+ENV LANGFLOW_SUPERUSER_PASSWORD=admin123
+ENV PYTHONPATH=/app
+
+# Expose port
+EXPOSE 7860
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:7860/health || exit 1
+
+# Run the application
+CMD ["python", "-m", "langflow", "run"]

@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  langflow:
+    image: cera123/langflow:latest
+    pull_policy: always
+    container_name: langflow-app
+    restart: unless-stopped
+    ports:
+      - "7860:7860"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      # Database Configuration
+      - LANGFLOW_DATABASE_URL=postgresql://langflow:langflow@postgres:5432/langflow
+
+      # Langflow Configuration
+      - LANGFLOW_HOST=0.0.0.0
+      - LANGFLOW_PORT=7860
+      - LANGFLOW_SUPERUSER=admin
+      - LANGFLOW_SUPERUSER_PASSWORD=admin123
+
+      # Auto login for development/testing
+      - LANGFLOW_AUTO_LOGIN=true
+
+      # Disable telemetry for testing
+      - DO_NOT_TRACK=true
+
+      # Config directory
+      - LANGFLOW_CONFIG_DIR=/app/langflow
+
+      # Additional settings
+      - LANGFLOW_CORS_ORIGINS=*
+      - LANGFLOW_CORS_ALLOW_CREDENTIALS=true
+
+    volumes:
+      - langflow-data:/app/langflow
+      - langflow-logs:/app/logs
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7860/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+    networks:
+      - langflow-network
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: langflow-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: langflow
+      POSTGRES_PASSWORD: langflow
+      POSTGRES_DB: langflow
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    ports:
+      - "5432:5432"
+    volumes:
+      - langflow-postgres:/var/lib/postgresql/data
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U langflow -d langflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - langflow-network
+
+volumes:
+  langflow-postgres:
+    driver: local
+  langflow-data:
+    driver: local
+  langflow-logs:
+    driver: local
+
+networks:
+  langflow-network:
+    driver: bridge
