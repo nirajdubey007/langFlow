@@ -33,12 +33,14 @@ COPY src /app/src
 
 # Build frontend
 WORKDIR /app/src/frontend
-# Increase Node.js memory limit for Vite build (3GB to fit within Docker's 3.72GB limit)
-ENV NODE_OPTIONS="--max-old-space-size=5072"
+# Increase Node.js memory limit for Vite build (2GB to reduce disk usage)
+ENV NODE_OPTIONS="--max-old-space-size=2048"
 RUN --mount=type=cache,target=/root/.npm \
-    npm ci && npm run build && \
+    npm ci --prefer-offline --no-audit && \
+    npm run build && \
     mkdir -p /app/src/backend/langflow/frontend && \
-    cp -r build /app/src/backend/langflow/frontend
+    cp -r build /app/src/backend/langflow/frontend && \
+    rm -rf node_modules .npm
 
 # Finalize Python dependencies
 WORKDIR /app
