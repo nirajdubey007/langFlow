@@ -87,7 +87,7 @@ jobs:
           docker info || true
       
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./langflow-deployment/build_and_push_fixed.Dockerfile
