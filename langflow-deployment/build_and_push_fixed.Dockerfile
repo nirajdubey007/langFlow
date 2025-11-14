@@ -10,7 +10,10 @@ FROM --platform=$BUILDPLATFORM python:3.12-slim-bookworm AS builder
 WORKDIR /app
 RUN apt-get update && \
     apt-get install -y --no-install-recommends build-essential git curl npm && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/* && \
+    rm -rf /var/tmp/*
 
 # Install uv manually since ghcr.io/astral-sh/uv is AMD-only
 RUN pip install uv
@@ -25,27 +28,28 @@ ENV UV_LINK_MODE=copy
 ENV RUSTFLAGS="--cfg reqwest_unstable"
 
 # Sync dependencies (no editable mode, no install project yet)
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen --no-install-project --no-editable --extra postgresql
+# Cache mount removed to save disk space
+RUN uv sync --frozen --no-install-project --no-editable --extra postgresql && \
+    rm -rf /tmp/* /var/tmp/* /root/.cache/*
 
 # Copy project source
 COPY src /app/src
 
 # Build frontend
 WORKDIR /app/src/frontend
-# Increase Node.js memory limit for Vite build (2GB to reduce disk usage)
-ENV NODE_OPTIONS="--max-old-space-size=2048"
-RUN --mount=type=cache,target=/root/.npm \
-    npm ci --prefer-offline --no-audit && \
+# Reduce Node.js memory limit to 1.5GB to save disk space
+ENV NODE_OPTIONS="--max-old-space-size=1536"
+RUN npm ci --prefer-offline --no-audit --ignore-scripts && \
     npm run build && \
     mkdir -p /app/src/backend/langflow/frontend && \
     cp -r build /app/src/backend/langflow/frontend && \
-    rm -rf node_modules .npm
+    rm -rf node_modules .npm /root/.npm /tmp/* /var/tmp/*
 
 # Finalize Python dependencies
 WORKDIR /app
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen --no-editable --extra postgresql
+# Cache mount removed to save disk space
+RUN uv sync --frozen --no-editable --extra postgresql && \
+    rm -rf /tmp/* /var/tmp/* /root/.cache/*
 
 
 ########################################
@@ -56,7 +60,8 @@ FROM --platform=$TARGETPLATFORM python:3.12-slim-bookworm AS runtime
 # Install minimal runtime dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends curl git libpq5 ca-certificates && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/.cache/*
 
 # Copy venv from builder
 WORKDIR /app

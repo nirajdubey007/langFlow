@@ -17,34 +17,51 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Maximize build space
-        uses: easimon/maximize-build-space@master
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
         with:
-          root-reserve-mb: 512
-          swap-size-mb: 1024
-          remove-dotnet: 'true'
-          remove-android: 'true'
-          remove-haskell: 'true'
-          remove-codeql: 'true'
-          remove-docker-images: 'true'
+          # All of these default to true, but feel free to set to "false" if necessary
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
       
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Additional disk cleanup
+      - name: Aggressive disk cleanup
         run: |
-          echo "Disk space before cleanup:"
+          echo "=== Disk space before cleanup ==="
           df -h
+          echo "=== Available space ==="
+          df -h / | awk 'NR==2 {print $4}'
           
-          # Clean Docker system
-          docker system prune -af --volumes || true
+          # Remove large packages
+          sudo rm -rf /usr/local/lib/android || true
+          sudo rm -rf /usr/share/dotnet || true
+          sudo rm -rf /opt/ghc || true
+          sudo rm -rf /usr/local/.ghcup || true
+          sudo rm -rf /usr/share/swift || true
+          sudo rm -rf /usr/local/graalvm || true
+          sudo rm -rf /usr/local/share/powershell || true
+          sudo rm -rf /usr/local/share/chromium || true
+          sudo rm -rf /usr/local/lib/node_modules || true
           
-          # Clean package manager caches
+          # Clean apt
+          sudo apt-get autoremove -y || true
           sudo apt-get clean || true
           sudo rm -rf /var/lib/apt/lists/* || true
           
-          echo "Disk space after cleanup:"
+          # Clean Docker
+          docker system prune -af --volumes || true
+          
+          echo "=== Disk space after cleanup ==="
           df -h
+          echo "=== Available space ==="
+          df -h / | awk 'NR==2 {print $4}'
       
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -62,6 +79,13 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
           echo "Building version: $VERSION"
       
+      - name: Monitor disk space before build
+        run: |
+          echo "=== Disk space before Docker build ==="
+          df -h
+          echo "=== Docker info ==="
+          docker info | grep -i "data space"
+      
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -71,12 +95,16 @@ jobs:
           tags: |
             cera123/langflow:latest
             cera123/langflow:${{ steps.get_version.outputs.VERSION }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
           platforms: linux/amd64
-          build-args: |
-            BUILDKIT_INLINE_CACHE=1
-          outputs: type=image,push=true
+          # Cache disabled to save disk space
+          no-cache: false
+          load: false
+      
+      - name: Monitor disk space after build
+        if: always()
+        run: |
+          echo "=== Disk space after Docker build ==="
+          df -h
       
       - name: Image digest
         run: echo "Image pushed successfully to cera123/langflow"
