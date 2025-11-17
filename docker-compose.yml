@@ -1,11 +1,12 @@
-version: '3.8'
-
 services:
   langflow:
-    image: cera123/langflow:latest
-    pull_policy: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: langflow-custom:latest
     container_name: langflow-app
     restart: unless-stopped
+    user: "0:0"  # Run as root to fix permission issues
     ports:
       - "7860:7860"
     depends_on:
