@@ -1,9 +1,7 @@
 services:
   langflow:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: langflow-custom:latest
+    image: langflowai/langflow:latest
+    pull_policy: always
     container_name: langflow-app
     restart: unless-stopped
     user: "0:0"  # Run as root to fix permission issues
