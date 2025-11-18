@@ -1,0 +1,84 @@
+services:
+  langflow:
+    image: langflowai/langflow:latest
+    pull_policy: always
+    container_name: langflow-app
+    restart: unless-stopped
+    user: "0:0"
+    ports:
+      - "127.0.0.1:7860:7860"  # Only expose to localhost for reverse proxy
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      # Database Configuration
+      - LANGFLOW_DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+
+      # Langflow Configuration
+      - LANGFLOW_HOST=0.0.0.0
+      - LANGFLOW_PORT=7860
+      - LANGFLOW_SUPERUSER=${LANGFLOW_SUPERUSER}
+      - LANGFLOW_SUPERUSER_PASSWORD=${LANGFLOW_SUPERUSER_PASSWORD}
+
+      # Security Settings
+      - LANGFLOW_AUTO_LOGIN=${LANGFLOW_AUTO_LOGIN:-false}
+      - DO_NOT_TRACK=${DO_NOT_TRACK:-true}
+
+      # Config directory
+      - LANGFLOW_CONFIG_DIR=/app/langflow
+
+      # CORS Settings - Update with your domain
+      - LANGFLOW_CORS_ORIGINS=${LANGFLOW_CORS_ORIGINS}
+      - LANGFLOW_CORS_ALLOW_CREDENTIALS=true
+
+      # Secret Key
+      - LANGFLOW_SECRET_KEY=${LANGFLOW_SECRET_KEY}
+
+    volumes:
+      - langflow-data:/app/langflow
+      - langflow-logs:/app/logs
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7860/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+    networks:
+      - langflow-network
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: langflow-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    ports:
+      - "127.0.0.1:5432:5432"  # Only expose to localhost
+    volumes:
+      - langflow-postgres:/var/lib/postgresql/data
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - langflow-network
+
+volumes:
+  langflow-postgres:
+    driver: local
+  langflow-data:
+    driver: local
+  langflow-logs:
+    driver: local
+
+networks:
+  langflow-network:
+    driver: bridge
+
