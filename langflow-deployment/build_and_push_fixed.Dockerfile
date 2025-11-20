@@ -1,69 +1,166 @@
-# syntax=docker/dockerfile:1.6
- 
-########################################
-# BUILDER STAGE
-########################################
-FROM python:3.12-slim-bookworm AS builder
+FROM python:3.12-slim
  
 WORKDIR /app
  
-# Install build tools
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends build-essential git curl npm pkg-config libpq-dev && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+# Install OS dependencies needed for build
+
+RUN apt-get update && apt-get install -y \
+
+    nodejs npm git build-essential
  
-# Create venv
-RUN python -m venv /app/.venv
-ENV PATH="/app/.venv/bin:$PATH"
- 
-# Install uv inside venv
-RUN pip install uv
- 
-# ----------------------------
-# 🔥 Copy full project first (important)
-# ----------------------------
+# Copy Langflow source
+
 COPY . /app
  
-# ----------------------------
-# 🔥 Install dependencies AFTER source is present
-# ----------------------------
-RUN uv sync --frozen --extra postgresql
- 
-# ----------------------------
-# Build frontend
-# ----------------------------
+# ---------------------------
+
+# Install frontend
+
+# ---------------------------
+
 WORKDIR /app/src/frontend
-RUN npm ci --prefer-offline --no-audit && npm run build
+
+RUN npm install
+
+RUN npm run build
  
-# Copy built frontend to backend
-RUN mkdir -p /app/src/backend/langflow/frontend && \
-    cp -r build /app/src/backend/langflow/frontend
+# The build output goes to: /app/src/frontend/dist
  
-########################################
-# RUNTIME STAGE
-########################################
-FROM python:3.12-slim-bookworm AS runtime
+# ---------------------------
+
+# Move frontend build to backend path expected by Langflow
+
+# ---------------------------
+
+WORKDIR /app
+
+RUN mkdir -p /app/src/backend/base/langflow/frontend \
+&& cp -r /app/src/frontend/dist/* /app/src/backend/base/langflow/frontend/
  
+# ---------------------------
+
+# Backend (Python)
+
+# ---------------------------
+
+WORKDIR /app
+
+RUN pip install uv
+
+RUN uv sync --frozen --no-editable --extra postgresql
+ 
+ENV PYTHONPATH=/app
+
+ENV PORT=7860
+
+ENV LANGFLOW_DATABASE_URL=sqlite:////app/langflow.db
+ 
+CMD ["bash", "-c", "uv run langflow run --host 0.0.0.0 --port $PORT --backend-only"]
+
+ 
+# ==============================
+
+# BASE IMAGE
+
+# ==============================
+
+FROM python:3.12-slim
+ 
+# Set working directory
+
 WORKDIR /app
  
-# Install required runtime libs
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends libpq5 curl git ca-certificates && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+# ==============================
+
+# SYSTEM DEPENDENCIES
+
+# Needed for frontend + uv build
+
+# ==============================
+
+RUN apt-get update && apt-get install -y \
+
+    git \
+
+    build-essential \
+
+    nodejs \
+
+    npm \
+
+    curl \
+&& rm -rf /var/lib/apt/lists/*
  
-# Copy venv + source
-COPY --from=builder /app/.venv /app/.venv
-COPY --from=builder /app/src /app/src
+# ==============================
+
+# COPY PROJECT
+
+# ==============================
+
+COPY . /app
  
-ENV PATH="/app/.venv/bin:$PATH"
+# ==============================
+
+# FRONTEND BUILD (REQUIRED)
+
+# Langflow uses Vite/React frontend
+
+# ==============================
+
+WORKDIR /app/src/frontend
+
+RUN npm install
+
+RUN npm run build
  
-# Create user
-RUN useradd -u 1000 -m user
-USER user
+# ==============================
+
+# COPY FRONTEND BUILD TO BACKEND
+
+# Langflow expects this exact path:
+
+# /app/src/backend/base/langflow/frontend
+
+# ==============================
+
+WORKDIR /app
+
+RUN mkdir -p /app/src/backend/base/langflow/frontend && \
+
+    cp -r /app/src/frontend/dist/* /app/src/backend/base/langflow/frontend/
  
-ENV LANGFLOW_HOST=0.0.0.0
-ENV LANGFLOW_PORT=7860
+# ==============================
+
+# BACKEND SETUP USING UV
+
+# ==============================
+
+RUN pip install uv
+
+RUN uv sync --frozen --no-install-project --no-editable --extra postgresql
  
-EXPOSE 7860
+# ==============================
+
+# ENVIRONMENT VARIABLES
+
+# ==============================
+
+ENV PYTHONPATH=/app
+
+ENV PORT=7860
+
+ENV LANGFLOW_DATABASE_URL=sqlite:////app/langflow.db
+
+ENV LANGFLOW_HOME=/app
  
-CMD ["/app/.venv/bin/python", "-m", "langflow", "run", "--host", "0.0.0.0", "--port", "7860"]
+# ==============================
+
+# COMMAND TO START LANGFLOW
+
+# Backend only (API mode)
+
+# ==============================
+
+CMD ["bash", "-c", "uv run langflow run --host 0.0.0.0 --port $PORT --backend-only"]
+
+ 
