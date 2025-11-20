@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: langflow-config
+  namespace: prod
+  labels:
+    app: langflow-api-prod
+data:
+  # Langflow Configuration
+  LANGFLOW_HOST: "0.0.0.0"
+  LANGFLOW_PORT: "7860"
+  LANGFLOW_CONFIG_DIR: "/app/langflow"
+  
+  # Database - SQLite (no PostgreSQL required)
+  LANGFLOW_SAVE_DB_IN_CONFIG_DIR: "true"
+  
+  # Auto login disabled for production
+  LANGFLOW_AUTO_LOGIN: "false"
+  
+  # Disable telemetry
+  DO_NOT_TRACK: "true"
+  
+  # CORS Configuration
+  LANGFLOW_CORS_ORIGINS: "*"
+  LANGFLOW_CORS_ALLOW_CREDENTIALS: "true"
+  
+  # Logging
+  LANGFLOW_LOG_LEVEL: "info"
+  
+  # Performance
+  LANGFLOW_WORKERS: "2"
+  LANGFLOW_WORKER_TIMEOUT: "300"
+  
+  # Cache
+  LANGFLOW_CACHE_TYPE: "async"
+  
+  # Store settings
+  LANGFLOW_STORE: "true"
+  LANGFLOW_STORE_ENVIRONMENT_VARIABLES: "true"
+

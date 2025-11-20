@@ -1,6 +1,6 @@
 services:
   langflow:
-    image: langflowai/langflow:latest
+    image: cera123/langflow:latest
     pull_policy: always
     container_name: langflow-app
     restart: unless-stopped
