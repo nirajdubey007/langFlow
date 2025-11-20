@@ -36,7 +36,7 @@ COPY ./src /app/src
 COPY src/frontend /tmp/src/frontend
 WORKDIR /tmp/src/frontend
 RUN --mount=type=cache,target=/root/.npm \
-    npm ci && npm run build && cp -r build /app/src/backend/langflow/frontend && rm -rf /tmp/src/frontend
+    npm ci && npm run build && cp -r build /app/src/backend/base/langflow/frontend && rm -rf /tmp/src/frontend
 
 WORKDIR /app
 COPY ./pyproject.toml /app/pyproject.toml
