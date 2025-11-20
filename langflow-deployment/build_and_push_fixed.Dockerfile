@@ -1,166 +1,69 @@
-FROM python:3.12-slim
- 
-WORKDIR /app
- 
-# Install OS dependencies needed for build
+# Multi-stage Dockerfile for Langflow
+# Stage 1: Build Frontend
+FROM node:20-slim AS frontend-builder
 
-RUN apt-get update && apt-get install -y \
+WORKDIR /app/frontend
 
-    nodejs npm git build-essential
- 
-# Copy Langflow source
+# Copy frontend package files
+COPY src/frontend/package*.json ./
 
-COPY . /app
- 
-# ---------------------------
+# Install frontend dependencies
+RUN npm ci --legacy-peer-deps
 
-# Install frontend
+# Copy frontend source
+COPY src/frontend/ ./
 
-# ---------------------------
-
-WORKDIR /app/src/frontend
-
-RUN npm install
-
+# Build frontend (output goes to 'build' directory)
 RUN npm run build
- 
-# The build output goes to: /app/src/frontend/dist
- 
-# ---------------------------
 
-# Move frontend build to backend path expected by Langflow
-
-# ---------------------------
-
-WORKDIR /app
-
-RUN mkdir -p /app/src/backend/base/langflow/frontend \
-&& cp -r /app/src/frontend/dist/* /app/src/backend/base/langflow/frontend/
- 
-# ---------------------------
-
-# Backend (Python)
-
-# ---------------------------
-
-WORKDIR /app
-
-RUN pip install uv
-
-RUN uv sync --frozen --no-editable --extra postgresql
- 
-ENV PYTHONPATH=/app
-
-ENV PORT=7860
-
-ENV LANGFLOW_DATABASE_URL=sqlite:////app/langflow.db
- 
-CMD ["bash", "-c", "uv run langflow run --host 0.0.0.0 --port $PORT --backend-only"]
-
- 
-# ==============================
-
-# BASE IMAGE
-
-# ==============================
-
+# Stage 2: Build Backend with Frontend
 FROM python:3.12-slim
- 
-# Set working directory
 
-WORKDIR /app
- 
-# ==============================
-
-# SYSTEM DEPENDENCIES
-
-# Needed for frontend + uv build
-
-# ==============================
-
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-
-    git \
-
-    build-essential \
-
-    nodejs \
-
-    npm \
-
     curl \
-&& rm -rf /var/lib/apt/lists/*
- 
-# ==============================
+    git \
+    build-essential \
+    postgresql-client \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# COPY PROJECT
-
-# ==============================
-
-COPY . /app
- 
-# ==============================
-
-# FRONTEND BUILD (REQUIRED)
-
-# Langflow uses Vite/React frontend
-
-# ==============================
-
-WORKDIR /app/src/frontend
-
-RUN npm install
-
-RUN npm run build
- 
-# ==============================
-
-# COPY FRONTEND BUILD TO BACKEND
-
-# Langflow expects this exact path:
-
-# /app/src/backend/base/langflow/frontend
-
-# ==============================
-
+# Set working directory
 WORKDIR /app
 
-RUN mkdir -p /app/src/backend/base/langflow/frontend && \
+# Copy dependency files
+COPY pyproject.toml README.md ./
+COPY src/backend/base/pyproject.toml src/backend/base/README.md ./src/backend/base/
 
-    cp -r /app/src/frontend/dist/* /app/src/backend/base/langflow/frontend/
- 
-# ==============================
+# Install uv
+RUN pip install --no-cache-dir uv
 
-# BACKEND SETUP USING UV
+# Copy backend source
+COPY src/backend/base/langflow ./src/backend/base/langflow
 
-# ==============================
+# Install Python dependencies with PostgreSQL support
+RUN pip install --no-cache-dir -e ./src/backend/base[postgresql]
 
-RUN pip install uv
+# Copy built frontend from frontend-builder stage
+# The build output is in 'build' directory, not 'dist'
+COPY --from=frontend-builder /app/frontend/build ./src/backend/base/langflow/frontend
 
-RUN uv sync --frozen --no-install-project --no-editable --extra postgresql
- 
-# ==============================
+# Create necessary directories and fix permissions
+RUN mkdir -p /app/langflow /app/logs && \
+    chmod -R 755 /app/langflow /app/logs
 
-# ENVIRONMENT VARIABLES
-
-# ==============================
-
+# Set environment variables
+ENV LANGFLOW_HOST=0.0.0.0
+ENV LANGFLOW_PORT=7860
 ENV PYTHONPATH=/app
 
-ENV PORT=7860
+# Expose port
+EXPOSE 7860
 
-ENV LANGFLOW_DATABASE_URL=sqlite:////app/langflow.db
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=5 \
+    CMD curl -f http://localhost:7860/health || exit 1
 
-ENV LANGFLOW_HOME=/app
- 
-# ==============================
+# Run the application
+CMD ["python", "-m", "langflow", "run", "--host", "0.0.0.0", "--port", "7860"]
 
-# COMMAND TO START LANGFLOW
-
-# Backend only (API mode)
-
-# ==============================
-
-CMD ["bash", "-c", "uv run langflow run --host 0.0.0.0 --port $PORT --backend-only"]
-
- 
