@@ -12,7 +12,7 @@ export default function AppHeader(): JSX.Element {
       className={`z-10 flex h-[48px] w-full items-center justify-between border-b pr-5 pl-2.5 dark:bg-background`}
       data-testid="app-header"
     >
-      {/* Left Section - Logo Removed */}
+
       <div
         className={`z-30 flex shrink-0 items-center gap-2`}
         data-testid="header_left_section_wrapper"
