@@ -5,12 +5,12 @@ from typing import Any
 
 import pytest
 import requests
-from langflow.api.v1.schemas import InputValueRequest
-from langflow.custom import Component
-from langflow.custom.eval import eval_custom_component_code
-from langflow.field_typing import Embeddings
-from langflow.graph import Graph
-from langflow.processing.process import run_graph_internal
+from lfx.custom import Component
+from lfx.custom.eval import eval_custom_component_code
+from lfx.field_typing import Embeddings
+from lfx.graph import Graph
+from lfx.processing.process import run_graph_internal
+from lfx.schema.schema import InputValueRequest
 
 
 def check_env_vars(*env_vars):

@@ -20,24 +20,45 @@ const useTheme = () => {
   };
 
   useEffect(() => {
-    // Always force dark mode - ignore localStorage and system preferences
-    setDark(true);
-    setSystemTheme(false);
-    localStorage.setItem("themePreference", "dark");
-    localStorage.setItem("isDark", "true");
+    const themePreference = localStorage.getItem("themePreference");
+    if (themePreference === "light") {
+      setDark(false);
+      setSystemTheme(false);
+    } else if (themePreference === "dark") {
+      setDark(true);
+      setSystemTheme(false);
+    } else {
+      // Default to system theme
+      setSystemTheme(true);
+      handleSystemTheme();
+    }
   }, []);
 
   useEffect(() => {
-    // Disabled system theme listener - always dark mode
-    // No need to listen to system theme changes
+    if (systemTheme && typeof window !== "undefined") {
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      const handleChange = (e) => {
+        setDark(e.matches);
+      };
+      mediaQuery.addEventListener("change", handleChange);
+      return () => {
+        mediaQuery.removeEventListener("change", handleChange);
+      };
+    }
   }, [systemTheme]);
 
   const setThemePreference = (theme) => {
-    // Always force dark mode regardless of theme parameter
-    setDark(true);
-    setSystemTheme(false);
-    localStorage.setItem("themePreference", "dark");
-    localStorage.setItem("isDark", "true");
+    if (theme === "light") {
+      setDark(false);
+      setSystemTheme(false);
+    } else if (theme === "dark") {
+      setDark(true);
+      setSystemTheme(false);
+    } else {
+      setSystemTheme(true);
+      handleSystemTheme();
+    }
+    localStorage.setItem("themePreference", theme);
   };
 
   return { systemTheme, dark, setThemePreference };

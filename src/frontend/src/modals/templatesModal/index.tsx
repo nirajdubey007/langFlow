@@ -9,7 +9,7 @@ import useAddFlow from "@/hooks/flows/use-add-flow";
 import type { Category } from "@/types/templates/types";
 import type { newFlowModalPropsType } from "../../types/components";
 import BaseModal from "../baseModal";
-import GetStartedComponent from "./components/GetStartedComponent";
+// GetStartedComponent removed
 import { Nav } from "./components/navComponent";
 import TemplateContentComponent from "./components/TemplateContentComponent";
 
@@ -17,7 +17,7 @@ export default function TemplatesModal({
   open,
   setOpen,
 }: newFlowModalPropsType): JSX.Element {
-  const [currentTab, setCurrentTab] = useState("get-started");
+  const [currentTab, setCurrentTab] = useState("all-templates");
   const addFlow = useAddFlow();
   const navigate = useCustomNavigate();
   const { folderId } = useParams();
@@ -27,7 +27,6 @@ export default function TemplatesModal({
     {
       title: "Templates",
       items: [
-        { title: "Get started", icon: "SquarePlay", id: "get-started" },
         { title: "All templates", icon: "LayoutPanelTop", id: "all-templates" },
       ],
     },
@@ -68,14 +67,10 @@ export default function TemplatesModal({
               setCurrentTab={setCurrentTab}
             />
             <main className="flex flex-1 flex-col gap-4 overflow-auto p-6 md:gap-8">
-              {currentTab === "get-started" ? (
-                <GetStartedComponent />
-              ) : (
                 <TemplateContentComponent
                   currentTab={currentTab}
                   categories={categories.flatMap((category) => category.items)}
                 />
-              )}
               <BaseModal.Footer>
                 <div className="flex w-full flex-col justify-between gap-4 pb-4 sm:flex-row sm:items-center">
                   <div className="flex flex-col items-start justify-center">

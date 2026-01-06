@@ -205,28 +205,28 @@
   .dark {
     --foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
     --background: 232 94% 6%; /* hsl(232, 94%, 6%) - #01051f */
-    --muted: 232 94% 12%; /* hsl(232, 94%, 12%) - slightly lighter */
+    --muted: 240 4% 16%; /* hsl(240, 4%, 16%) */
     --muted-foreground: 240 5% 65%; /* hsl(240, 5%, 65%) */
-    --card: 232 94% 6%; /* hsl(232, 94%, 6%) - #01051f */
+    --card: 240 6% 10%; /* hsl(240, 6%, 10%) */
     --card-foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
-    --popover: 232 94% 6%; /* hsl(232, 94%, 6%) - #01051f */
+    --popover: 240 6% 10%; /* hsl(240, 6%, 10%) */
     --popover-foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
-    --border: 232 94% 15%; /* hsl(232, 94%, 15%) - slightly lighter than background */
-    --input: 232 94% 10%; /* hsl(232, 94%, 10%) - slightly lighter than background */
+    --border: 240 5% 26%; /* hsl(240, 5%, 26%) */
+    --input: 240 5% 34%; /* hsl(240, 5%, 34%) */
     --primary-foreground: 0 0% 0%; /* hsl(0, 0%, 0%) */
     --primary: 0 0% 100%; /* hsl(0, 0%, 100%) */
     --secondary: 0 0% 0%; /* hsl(0, 0%, 0%) */
     --secondary-foreground: 240 6% 90%; /* hsl(240, 6%, 90%) */
-    --accent: 232 94% 12%; /* hsl(232, 94%, 12%) - slightly lighter than background */
+    --accent: 240 4% 16%; /* hsl(240, 4%, 16%) */
     --accent-foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
     --destructive: 0 84% 60%; /* hsl(0, 84%, 60%) */
     --destructive-foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
     --ring: 0 0% 100%; /* hsl(0, 0%, 100%) */
     --primary-hover: 240 6% 90%; /* hsl(240, 6%, 90%) */
-    --secondary-hover: 232 94% 12%; /* hsl(232, 94%, 12%) */
+    --secondary-hover: 240 4% 16%; /* hsl(240, 4%, 16%) */
     --placeholder-foreground: 240 4% 46%; /* hsl(240, 4%, 46%) */
-    --canvas: 232 94% 6%; /* hsl(232, 94%, 6%) - #01051f */
-    --canvas-dot: 232 94% 20%; /* hsl(232, 94%, 20%) - slightly lighter */
+    --canvas: 0 0% 0%; /* hsl(0, 0%, 0%) */
+    --canvas-dot: 240 5.3% 26.1%; /* hsl(240, 5.3%, 26.1%) */
 
     --accent-emerald: 164 86% 16%; /* hsl(164, 86%, 16%) */
     --accent-emerald-foreground: 158 64% 52%; /* hsl(158, 64%, 52%) */
@@ -239,19 +239,19 @@
     --accent-red-foreground: 0 91% 71%; /* hsl(0, 91%, 71%) */
     --tooltip: 0 0% 100%; /* hsl(0, 0%, 100%) */
 
-    --jse-theme-color: hsl(232, 94%, 6%) !important;
-    --jse-theme-color-highlight: hsl(232, 94%, 12%);
-    --jse-panel-background: hsl(232, 94%, 6%);
-    --jse-menu-color: hsl(232, 94%, 15%);
+    --jse-theme-color: hsl(240, 4%, 16%) !important;
+    --jse-theme-color-highlight: hsl(240, 4%, 16%);
+    --jse-panel-background: hsl(240, 4%, 16%);
+    --jse-menu-color: hsl(240, 5%, 26%);
 
-    --jse-main-border: hsl(232, 94%, 15%);
-    --jse-background-color: hsl(232, 94%, 6%);
+    --jse-main-border: hsl(240, 5%, 26%);
+    --jse-background-color: hsl(240, 4%, 16%);
     --jse-text-color: hsl(0, 0%, 100%);
     --jse-selection-background-color: hsl(240, 5%, 65%, 0.2);
     --jse-selection-background-inactive-color: hsl(240, 5%, 65%, 0.15);
-    --jse-hover-background-color: hsl(232, 94%, 12%);
-    --jse-active-line-background-color: hsl(232, 94%, 12%);
-    --jse-search-match-background-color: hsl(232, 94%, 12%);
+    --jse-hover-background-color: hsl(240, 4%, 16%);
+    --jse-active-line-background-color: hsl(240, 4%, 16%);
+    --jse-search-match-background-color: hsl(240, 4%, 16%);
     --jse-search-match-color: hsl(234, 89%, 74%);
     --jse-text-readonly: hsl(240, 5%, 65%);
     --jse-error-color: hsl(0, 84%, 60%);
@@ -461,4 +461,19 @@
     --red-foreground: 0 72.2% 50.6%;
     --indigo-foreground: 234.5 89.5% 73.9%;
   }
+}
+
+/* Force background color to #01051f everywhere */
+html.dark,
+html.dark body,
+.dark #body,
+.dark #root {
+  background-color: #01051f !important;
+}
+
+/* Ensure main app containers use consistent background */
+.dark main:not([class*="bg-"]),
+.dark .flex.h-screen:not([class*="bg-"]),
+.dark [class*="overflow-hidden"]:not([class*="bg-"]) {
+  background-color: #01051f !important;
 }

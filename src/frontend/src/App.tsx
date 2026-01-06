@@ -8,11 +8,10 @@ import { useDarkStore } from "./stores/darkStore";
 export default function App() {
   const dark = useDarkStore((state) => state.dark);
   useEffect(() => {
-    // Always ensure dark class is applied
-    const body = document.getElementById("body");
-    if (body) {
-      body.classList.add("dark");
-      body.classList.remove("light");
+    if (!dark) {
+      document.getElementById("body")!.classList.remove("dark");
+    } else {
+      document.getElementById("body")!.classList.add("dark");
     }
   }, [dark]);
   return (

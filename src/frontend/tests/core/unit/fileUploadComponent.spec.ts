@@ -1,6 +1,6 @@
-import { expect, test } from "@playwright/test";
 import fs from "fs";
 import path from "path";
+import { expect, test } from "../../fixtures";
 import { addLegacyComponents } from "../../utils/add-legacy-components";
 import { adjustScreenView } from "../../utils/adjust-screen-view";
 import { awaitBootstrapTest } from "../../utils/await-bootstrap-test";
@@ -35,12 +35,12 @@ test(
     await page.getByTestId("sidebar-search-input").click();
     await page.getByTestId("sidebar-search-input").fill("file");
 
-    await page.waitForSelector('[data-testid="dataFile"]', {
+    await page.waitForSelector('[data-testid="files_and_knowledgeRead File"]', {
       timeout: 10000,
     });
 
     await page
-      .getByTestId("dataFile")
+      .getByTestId("files_and_knowledgeRead File")
       .first()
       .dragTo(page.locator('//*[@id="react-flow-id"]'));
     await page.mouse.up();
@@ -73,7 +73,8 @@ test(
       await page.getByTestId("info-types").hover();
       await expect(
         page.getByText(
-          "adoc, asc, asciidoc, bmp, bz2, docm, docx, dotm, dotx, gz, htm, html, jpeg, js, md, mdx, png, potm, potx, ppsm, ppsx, pptm, pptx, py, sh, sql, tar, tgz, tiff, ts, tsx, txt, webp, xhtml, xls, xlsx, xml, yaml, yml, zip",
+          "adoc, asc, asciidoc, bmp, bz2, docm, docx, dotm, dotx, gz, htm, html, jpeg, jpg, js, md, mdx, png, potm, potx, ppsm, ppsx, pptm, pptx, py, sh, sql, tar, tgz, tiff, ts, tsx, txt, webp, xhtml, xls, xlsx, xml, yaml, yml, zip",
+          { exact: false },
         ),
       ).toBeVisible();
 
@@ -405,12 +406,12 @@ test(
     await page.getByTestId("sidebar-search-input").click();
     await page.getByTestId("sidebar-search-input").fill("file");
 
-    await page.waitForSelector('[data-testid="dataFile"]', {
+    await page.waitForSelector('[data-testid="files_and_knowledgeRead File"]', {
       timeout: 10000,
     });
 
     await page
-      .getByTestId("dataFile")
+      .getByTestId("files_and_knowledgeRead File")
       .first()
       .dragTo(page.locator('//*[@id="react-flow-id"]'));
     await page.mouse.up();
@@ -716,12 +717,12 @@ test(
     await page.getByTestId("sidebar-search-input").click();
     await page.getByTestId("sidebar-search-input").fill("file");
 
-    await page.waitForSelector('[data-testid="dataFile"]', {
+    await page.waitForSelector('[data-testid="files_and_knowledgeRead File"]', {
       timeout: 10000,
     });
 
     await page
-      .getByTestId("dataFile")
+      .getByTestId("files_and_knowledgeRead File")
       .first()
       .dragTo(page.locator('//*[@id="react-flow-id"]'));
     await page.mouse.up();

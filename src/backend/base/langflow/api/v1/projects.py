@@ -12,20 +12,29 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import StreamingResponse
 from fastapi_pagination import Params
 from fastapi_pagination.ext.sqlmodel import apaginate
+from lfx.log.logger import logger
+from lfx.services.mcp_composer.service import MCPComposerService
 from sqlalchemy import or_, update
 from sqlalchemy.orm import selectinload
 from sqlmodel import select
 
 from langflow.api.utils import CurrentActiveUser, DbSession, cascade_delete_flow, custom_params, remove_api_keys
+from langflow.api.utils.mcp.config_utils import validate_mcp_server_for_project
 from langflow.api.v1.auth_helpers import handle_auth_settings_update
 from langflow.api.v1.flows import create_flows
-from langflow.api.v1.mcp_projects import register_project_with_composer
+from langflow.api.v1.mcp_projects import (
+    get_project_sse_url,  # noqa: F401
+    get_project_streamable_http_url,
+    register_project_with_composer,
+)
 from langflow.api.v1.schemas import FlowListCreate
+from langflow.api.v2.mcp import update_server
 from langflow.helpers.flow import generate_unique_flow_name
 from langflow.helpers.folders import generate_unique_folder_name
-from langflow.initial_setup.constants import STARTER_FOLDER_NAME
-from langflow.logging import logger
+from langflow.initial_setup.constants import ASSISTANT_FOLDER_NAME, STARTER_FOLDER_NAME
 from langflow.services.auth.mcp_encryption import encrypt_auth_settings
+from langflow.services.database.models.api_key.crud import create_api_key
+from langflow.services.database.models.api_key.model import ApiKeyCreate
 from langflow.services.database.models.flow.model import Flow, FlowCreate, FlowRead
 from langflow.services.database.models.folder.constants import DEFAULT_FOLDER_NAME
 from langflow.services.database.models.folder.model import (
@@ -36,8 +45,7 @@ from langflow.services.database.models.folder.model import (
     FolderUpdate,
 )
 from langflow.services.database.models.folder.pagination_model import FolderWithPaginatedFlows
-from langflow.services.deps import get_service, get_settings_service
-from langflow.services.mcp_composer.service import MCPComposerService
+from langflow.services.deps import get_service, get_settings_service, get_storage_service
 from langflow.services.schema import ServiceType
 
 router = APIRouter(prefix="/projects", tags=["Projects"])
@@ -71,6 +79,7 @@ async def create_project(
             )
             if project_results:
                 project_names = [project.name for project in project_results]
+                # TODO: this throws an error if the name contains non-numeric content in parentheses
                 project_numbers = [int(name.split("(")[-1].split(")")[0]) for name in project_names if "(" in name]
                 if project_numbers:
                     new_project.name = f"{new_project.name} ({max(project_numbers) + 1})"
@@ -80,6 +89,7 @@ async def create_project(
         settings_service = get_settings_service()
 
         # If AUTO_LOGIN is false, automatically enable API key authentication
+        default_auth = {"auth_type": "none"}
         if not settings_service.auth_settings.AUTO_LOGIN and not new_project.auth_settings:
             default_auth = {"auth_type": "apikey"}
             new_project.auth_settings = encrypt_auth_settings(default_auth)
@@ -89,26 +99,118 @@ async def create_project(
             )
 
         session.add(new_project)
-        await session.commit()
+        await session.flush()
         await session.refresh(new_project)
+
+        # Auto-register MCP server for this project with configured default auth
+        if get_settings_service().settings.add_projects_to_mcp_servers:
+            try:
+                # Build Streamable HTTP URL (preferred transport) and legacy SSE URL (for docs/errors)
+                streamable_http_url = await get_project_streamable_http_url(new_project.id)
+                # legacy SSE URL
+                # sse_url = await get_project_sse_url(new_project.id)
+
+                # Prepare server config based on auth type same as new project
+                if default_auth.get("auth_type", "none") == "apikey":
+                    # Create API key for API key authentication
+                    api_key_name = f"MCP Project {new_project.name} - default"
+                    unmasked_api_key = await create_api_key(session, ApiKeyCreate(name=api_key_name), current_user.id)
+                    # Starting v>=1.7.1, we use Streamable HTTP transport by default
+                    command = "uvx"
+                    args = [
+                        "mcp-proxy",
+                        "--transport",
+                        "streamablehttp",
+                        "--headers",
+                        "x-api-key",
+                        unmasked_api_key.api_key,
+                        streamable_http_url,
+                    ]
+                elif default_auth.get("auth_type", "none") == "oauth":
+                    msg = "OAuth authentication is not yet implemented for MCP server creation during project creation."
+                    logger.warning(msg)
+                    raise HTTPException(status_code=501, detail=msg)
+                else:  # default_auth_type == "none"
+                    # No authentication - direct connection
+                    command = "uvx"
+                    args = [
+                        "mcp-proxy",
+                        "--transport",
+                        "streamablehttp",
+                        streamable_http_url,
+                    ]
+
+                server_config = {"command": command, "args": args}
+
+                # Validate MCP server for this project
+                validation_result = await validate_mcp_server_for_project(
+                    new_project.id,
+                    new_project.name,
+                    current_user,
+                    session,
+                    get_storage_service(),
+                    get_settings_service(),
+                    operation="create",
+                )
+
+                # Handle conflicts
+                if validation_result.has_conflict:
+                    await logger.aerror(validation_result.conflict_message)
+                    raise HTTPException(
+                        status_code=409,  # Conflict - semantically correct for name conflicts
+                        detail=validation_result.conflict_message,
+                    )
+
+                # Log if updating existing server
+                if validation_result.should_skip:
+                    msg = (
+                        f"MCP server '{validation_result.server_name}' "
+                        f"already exists for project {new_project.id}, updating"
+                    )
+                    await logger.adebug(msg)
+
+                server_name = validation_result.server_name
+
+                await update_server(
+                    server_name,
+                    server_config,
+                    current_user,
+                    session,
+                    get_storage_service(),
+                    get_settings_service(),
+                )
+            except HTTPException:
+                # Re-raise HTTP validation errors (conflicts, etc.)
+                raise
+            except NotImplementedError:
+                msg = "OAuth as default MCP authentication type is not yet implemented"
+                await logger.aerror(msg)
+                raise
+            except Exception as e:  # noqa: BLE001
+                msg = f"Failed to auto-register MCP server for project {new_project.id}: {e}"
+                await logger.aexception(msg, exc_info=True)
 
         if project.components_list:
             update_statement_components = (
                 update(Flow).where(Flow.id.in_(project.components_list)).values(folder_id=new_project.id)  # type: ignore[attr-defined]
             )
             await session.exec(update_statement_components)
-            await session.commit()
 
         if project.flows_list:
             update_statement_flows = (
                 update(Flow).where(Flow.id.in_(project.flows_list)).values(folder_id=new_project.id)  # type: ignore[attr-defined]
             )
             await session.exec(update_statement_flows)
-            await session.commit()
+
+        # Convert to FolderRead while session is still active to avoid detached instance errors
+        folder_read = FolderRead.model_validate(new_project, from_attributes=True)
+    except HTTPException:
+        # Re-raise HTTP exceptions (like 409 conflicts) without modification
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e)) from e
 
-    return new_project
+    return folder_read
 
 
 @router.get("/", response_model=list[FolderRead], status_code=200)
@@ -126,7 +228,10 @@ async def read_projects(
             )
         ).all()
         projects = [project for project in projects if project.name != STARTER_FOLDER_NAME]
-        return sorted(projects, key=lambda x: x.name != DEFAULT_FOLDER_NAME)
+        sorted_projects = sorted(projects, key=lambda x: x.name != DEFAULT_FOLDER_NAME)
+
+        # Convert to FolderRead while session is still active to avoid detached instance errors
+        return [FolderRead.model_validate(project, from_attributes=True) for project in sorted_projects]
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e)) from e
 
@@ -187,7 +292,9 @@ async def read_project(
         # If no pagination requested, return all flows for the current user
         flows_from_current_user_in_project = [flow for flow in project.flows if flow.user_id == current_user.id]
         project.flows = flows_from_current_user_in_project
-        return project  # noqa: TRY300
+
+        # Convert to FolderReadWithFlows while session is still active to avoid detached instance errors
+        return FolderReadWithFlows.model_validate(project, from_attributes=True)
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e)) from e
@@ -237,7 +344,86 @@ async def update_project(
 
         # Handle other updates
         if project.name and project.name != existing_project.name:
+            old_project_name = existing_project.name
             existing_project.name = project.name
+
+            # Update corresponding MCP server name if auto-add is enabled
+            if get_settings_service().settings.add_projects_to_mcp_servers:
+                try:
+                    # Validate old server (for this specific project)
+                    old_validation = await validate_mcp_server_for_project(
+                        existing_project.id,
+                        old_project_name,
+                        current_user,
+                        session,
+                        get_storage_service(),
+                        get_settings_service(),
+                        operation="update",
+                    )
+
+                    # Validate new server name (check for conflicts)
+                    new_validation = await validate_mcp_server_for_project(
+                        existing_project.id,
+                        project.name,
+                        current_user,
+                        session,
+                        get_storage_service(),
+                        get_settings_service(),
+                        operation="update",
+                    )
+
+                    # Only proceed if server names would be different
+                    if old_validation.server_name != new_validation.server_name:
+                        # Check if new server name would conflict with different project
+                        if new_validation.has_conflict:
+                            await logger.aerror(new_validation.conflict_message)
+                            raise HTTPException(
+                                status_code=409,  # Conflict - semantically correct for name conflicts
+                                detail=new_validation.conflict_message,
+                            )
+
+                        # If old server exists and matches this project, proceed with rename
+                        if old_validation.server_exists and old_validation.project_id_matches:
+                            # Remove the old server
+                            await update_server(
+                                old_validation.server_name,
+                                {},  # Empty config for deletion
+                                current_user,
+                                session,
+                                get_storage_service(),
+                                get_settings_service(),
+                                delete=True,
+                            )
+
+                            # Add server with new name and existing config
+                            await update_server(
+                                new_validation.server_name,
+                                old_validation.existing_config or {},
+                                current_user,
+                                session,
+                                get_storage_service(),
+                                get_settings_service(),
+                            )
+
+                            msg = (
+                                f"Updated MCP server name from {old_validation.server_name} "
+                                f"to {new_validation.server_name}"
+                            )
+                            await logger.adebug(msg)
+                        else:
+                            msg = (
+                                f"Old MCP server '{old_validation.server_name}' "
+                                "not found for this project, skipping rename"
+                            )
+                            await logger.adebug(msg)
+
+                except HTTPException:
+                    # Re-raise HTTP validation errors (conflicts, etc.)
+                    raise
+                except Exception as e:  # noqa: BLE001
+                    # Log but don't fail the project update if MCP server handling fails
+                    msg = f"Failed to handle MCP server name update for project rename: {e}"
+                    await logger.awarning(msg)
 
         if project.description is not None:
             existing_project.description = project.description
@@ -246,23 +432,25 @@ async def update_project(
             existing_project.parent_id = project.parent_id
 
         session.add(existing_project)
-        await session.commit()
+        await session.flush()
         await session.refresh(existing_project)
 
         # Start MCP Composer if auth changed to OAuth
         if should_start_mcp_composer:
-            await logger.adebug(
+            msg = (
                 f"Auth settings changed to OAuth for project {existing_project.name} ({existing_project.id}), "
                 "starting MCP Composer"
             )
+            await logger.adebug(msg)
             background_tasks.add_task(register_project_with_composer, existing_project)
 
         # Stop MCP Composer if auth changed FROM OAuth to something else
         elif should_stop_mcp_composer:
-            await logger.ainfo(
+            msg = (
                 f"Auth settings changed from OAuth for project {existing_project.name} ({existing_project.id}), "
                 "stopping MCP Composer"
             )
+            await logger.ainfo(msg)
 
             # Get the MCP Composer service and stop the project's composer
             mcp_composer_service: MCPComposerService = cast(
@@ -282,19 +470,23 @@ async def update_project(
                 update(Flow).where(Flow.id.in_(excluded_flows)).values(folder_id=my_collection_project.id)  # type: ignore[attr-defined]
             )
             await session.exec(update_statement_my_collection)
-            await session.commit()
 
         if concat_project_components:
             update_statement_components = (
                 update(Flow).where(Flow.id.in_(concat_project_components)).values(folder_id=existing_project.id)  # type: ignore[attr-defined]
             )
             await session.exec(update_statement_components)
-            await session.commit()
 
+        # Convert to FolderRead while session is still active to avoid detached instance errors
+        folder_read = FolderRead.model_validate(existing_project, from_attributes=True)
+
+    except HTTPException:
+        # Re-raise HTTP exceptions (like 409 conflicts) without modification
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e)) from e
 
-    return existing_project
+    return folder_read
 
 
 @router.delete("/{project_id}", status_code=204)
@@ -321,6 +513,15 @@ async def delete_project(
     if not project:
         raise HTTPException(status_code=404, detail="Project not found")
 
+    # Prevent deletion of the Langflow Assistant folder
+    if project.name == ASSISTANT_FOLDER_NAME:
+        msg = f"Cannot delete the '{ASSISTANT_FOLDER_NAME}' folder, that contains pre-built flows."
+        await logger.adebug(msg)
+        raise HTTPException(
+            status_code=403,
+            detail=msg,
+        )
+
     # Check if project has OAuth authentication and stop MCP Composer if needed
     if project.auth_settings and project.auth_settings.get("auth_type") == "oauth":
         try:
@@ -333,9 +534,52 @@ async def delete_project(
             # Log but don't fail the deletion if MCP Composer cleanup fails
             await logger.aerror(f"Failed to stop MCP Composer for deleted project {project_id}: {e}")
 
+    # Delete corresponding MCP server if auto-add was enabled
+    if get_settings_service().settings.add_projects_to_mcp_servers:
+        try:
+            # Validate MCP server for this specific project
+            validation_result = await validate_mcp_server_for_project(
+                project_id,
+                project.name,
+                current_user,
+                session,
+                get_storage_service(),
+                get_settings_service(),
+                operation="delete",
+            )
+
+            # Only delete if server exists and matches this project ID
+            if validation_result.server_exists and validation_result.project_id_matches:
+                await update_server(
+                    validation_result.server_name,
+                    {},  # Empty config for deletion
+                    current_user,
+                    session,
+                    get_storage_service(),
+                    get_settings_service(),
+                    delete=True,
+                )
+                msg = (
+                    f"Deleted MCP server {validation_result.server_name} for "
+                    f"deleted project {project.name} ({project_id})"
+                )
+                await logger.adebug(msg)
+            elif validation_result.server_exists and not validation_result.project_id_matches:
+                msg = (
+                    f"MCP server '{validation_result.server_name}' exists but belongs to different project, "
+                    "skipping deletion"
+                )
+                await logger.adebug(msg)
+            else:
+                msg = f"No MCP server found for deleted project {project.name} ({project_id})"
+                await logger.adebug(msg)
+
+        except Exception as e:  # noqa: BLE001
+            # Log but don't fail the project deletion if MCP server handling fails
+            await logger.awarning(f"Failed to handle MCP server cleanup for deleted project {project_id}: {e}")
+
     try:
         await session.delete(project)
-        await session.commit()
         return Response(status_code=status.HTTP_204_NO_CONTENT)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e)) from e
@@ -428,7 +672,7 @@ async def upload_file(
         )
 
     session.add(new_project)
-    await session.commit()
+    await session.flush()
     await session.refresh(new_project)
     del data["folder_name"]
     del data["folder_description"]

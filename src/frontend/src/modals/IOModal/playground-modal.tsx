@@ -12,7 +12,7 @@ import { customOpenNewTab } from "@/customization/utils/custom-open-new-tab";
 import { LangflowButtonRedirectTarget } from "@/customization/utils/urls";
 import { useUtilityStore } from "@/stores/utilityStore";
 import { swatchColors } from "@/utils/styleUtils";
-import LangflowLogoColor from "../../assets/LangflowLogoColor.svg?react";
+// Logo removed
 import IconComponent from "../../components/common/genericIconComponent";
 import ShadTooltip from "../../components/common/shadTooltipComponent";
 import { Button } from "../../components/ui/button";
@@ -428,8 +428,8 @@ export default function IOModal({
                       variant="primary"
                       className="w-full !rounded-xl shadow-lg"
                     >
-                      <LangflowLogoColor />
-                      <div className="text-sm">Built with Langflow</div>
+                      <IconComponent name="Bot" />
+                      <div className="text-sm">Built with Automate</div>
                     </Button>
                   </div>
                 )}
@@ -440,14 +440,14 @@ export default function IOModal({
                 <ShadTooltip
                   styleClasses="z-50"
                   side="right"
-                  content="Built with Langflow"
+                  content="Built with Automate"
                 >
                   <Button
                     variant="primary"
                     className="h-12 w-12 !rounded-xl !p-4 shadow-lg"
                     onClick={LangflowButtonClick}
                   >
-                    <LangflowLogoColor className="h-[18px] w-[18px] scale-150" />
+                    <IconComponent name="Bot" className="h-[18px] w-[18px] scale-150" />
                   </Button>
                 </ShadTooltip>
               </div>

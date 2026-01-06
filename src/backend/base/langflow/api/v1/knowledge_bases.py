@@ -6,10 +6,10 @@ from pathlib import Path
 import pandas as pd
 from fastapi import APIRouter, HTTPException
 from langchain_chroma import Chroma
+from lfx.log import logger
 from pydantic import BaseModel
 
 from langflow.api.utils import CurrentActiveUser
-from langflow.logging import logger
 from langflow.services.deps import get_settings_service
 
 router = APIRouter(tags=["Knowledge Bases"], prefix="/knowledge_bases")
@@ -203,10 +203,10 @@ def calculate_text_metrics(df: pd.DataFrame, text_columns: list[str]) -> tuple[i
             continue
 
         text_series = df[col].astype(str).fillna("")
-        total_characters += text_series.str.len().sum()  # type: ignore[assignment]
-        total_words += text_series.str.split().str.len().sum()  # type: ignore[assignment]
+        total_characters += int(text_series.str.len().sum().item())
+        total_words += int(text_series.str.split().str.len().sum().item())
 
-    return int(total_words), int(total_characters)
+    return total_words, total_characters
 
 
 def get_kb_metadata(kb_path: Path) -> dict:
@@ -260,7 +260,7 @@ def get_kb_metadata(kb_path: Path) -> dict:
         )
 
         # Access the raw collection
-        collection = chroma._collection
+        collection = chroma._collection  # noqa: SLF001
 
         # Fetch all documents and metadata
         results = collection.get(include=["documents", "metadatas"])

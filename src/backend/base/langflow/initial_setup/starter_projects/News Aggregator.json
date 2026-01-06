@@ -6,38 +6,8 @@
         "className": "",
         "data": {
           "sourceHandle": {
-            "dataType": "ChatOutput",
-            "id": "ChatOutput-vSJ6N",
-            "name": "message",
-            "output_types": [
-              "Message"
-            ]
-          },
-          "targetHandle": {
-            "fieldName": "input",
-            "id": "SaveToFile-Jknwv",
-            "inputTypes": [
-              "Data",
-              "DataFrame",
-              "Message"
-            ],
-            "type": "other"
-          }
-        },
-        "id": "reactflow__edge-ChatOutput-vSJ6N{œdataTypeœ:œChatOutputœ,œidœ:œChatOutput-vSJ6Nœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-SaveToFile-Jknwv{œfieldNameœ:œinputœ,œidœ:œSaveToFile-Jknwvœ,œinputTypesœ:[œDataœ,œDataFrameœ,œMessageœ],œtypeœ:œotherœ}",
-        "selected": false,
-        "source": "ChatOutput-vSJ6N",
-        "sourceHandle": "{œdataTypeœ: œChatOutputœ, œidœ: œChatOutput-vSJ6Nœ, œnameœ: œmessageœ, œoutput_typesœ: [œMessageœ]}",
-        "target": "SaveToFile-Jknwv",
-        "targetHandle": "{œfieldNameœ: œinputœ, œidœ: œSaveToFile-Jknwvœ, œinputTypesœ: [œDataœ, œDataFrameœ, œMessageœ], œtypeœ: œotherœ}"
-      },
-      {
-        "animated": false,
-        "className": "",
-        "data": {
-          "sourceHandle": {
             "dataType": "AgentQL",
-            "id": "AgentQL-tQP4B",
+            "id": "AgentQL-064NO",
             "name": "component_as_tool",
             "output_types": [
               "Tool"
@@ -45,19 +15,19 @@
           },
           "targetHandle": {
             "fieldName": "tools",
-            "id": "Agent-9FjKL",
+            "id": "Agent-ZH2Rd",
             "inputTypes": [
               "Tool"
             ],
             "type": "other"
           }
         },
-        "id": "reactflow__edge-AgentQL-tQP4B{œdataTypeœ:œAgentQLœ,œidœ:œAgentQL-tQP4Bœ,œnameœ:œcomponent_as_toolœ,œoutput_typesœ:[œToolœ]}-Agent-9FjKL{œfieldNameœ:œtoolsœ,œidœ:œAgent-9FjKLœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-AgentQL-064NO{œdataTypeœ:œAgentQLœ,œidœ:œAgentQL-064NOœ,œnameœ:œcomponent_as_toolœ,œoutput_typesœ:[œToolœ]}-Agent-ZH2Rd{œfieldNameœ:œtoolsœ,œidœ:œAgent-ZH2Rdœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}",
         "selected": false,
-        "source": "AgentQL-tQP4B",
-        "sourceHandle": "{œdataTypeœ: œAgentQLœ, œidœ: œAgentQL-tQP4Bœ, œnameœ: œcomponent_as_toolœ, œoutput_typesœ: [œToolœ]}",
-        "target": "Agent-9FjKL",
-        "targetHandle": "{œfieldNameœ: œtoolsœ, œidœ: œAgent-9FjKLœ, œinputTypesœ: [œToolœ], œtypeœ: œotherœ}"
+        "source": "AgentQL-064NO",
+        "sourceHandle": "{œdataTypeœ: œAgentQLœ, œidœ: œAgentQL-064NOœ, œnameœ: œcomponent_as_toolœ, œoutput_typesœ: [œToolœ]}",
+        "target": "Agent-ZH2Rd",
+        "targetHandle": "{œfieldNameœ: œtoolsœ, œidœ: œAgent-ZH2Rdœ, œinputTypesœ: [œToolœ], œtypeœ: œotherœ}"
       },
       {
         "animated": false,
@@ -65,7 +35,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "ChatInput",
-            "id": "ChatInput-ltBH6",
+            "id": "ChatInput-S2wgk",
             "name": "message",
             "output_types": [
               "Message"
@@ -73,19 +43,19 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "Agent-9FjKL",
+            "id": "Agent-ZH2Rd",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "reactflow__edge-ChatInput-ltBH6{œdataTypeœ:œChatInputœ,œidœ:œChatInput-ltBH6œ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-Agent-9FjKL{œfieldNameœ:œinput_valueœ,œidœ:œAgent-9FjKLœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-ChatInput-S2wgk{œdataTypeœ:œChatInputœ,œidœ:œChatInput-S2wgkœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-Agent-ZH2Rd{œfieldNameœ:œinput_valueœ,œidœ:œAgent-ZH2Rdœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "ChatInput-ltBH6",
-        "sourceHandle": "{œdataTypeœ: œChatInputœ, œidœ: œChatInput-ltBH6œ, œnameœ: œmessageœ, œoutput_typesœ: [œMessageœ]}",
-        "target": "Agent-9FjKL",
-        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œAgent-9FjKLœ, œinputTypesœ: [œMessageœ], œtypeœ: œstrœ}"
+        "source": "ChatInput-S2wgk",
+        "sourceHandle": "{œdataTypeœ: œChatInputœ, œidœ: œChatInput-S2wgkœ, œnameœ: œmessageœ, œoutput_typesœ: [œMessageœ]}",
+        "target": "Agent-ZH2Rd",
+        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œAgent-ZH2Rdœ, œinputTypesœ: [œMessageœ], œtypeœ: œstrœ}"
       },
       {
         "animated": false,
@@ -93,7 +63,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "Agent",
-            "id": "Agent-9FjKL",
+            "id": "Agent-ZH2Rd",
             "name": "response",
             "output_types": [
               "Message"
@@ -101,7 +71,7 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "ChatOutput-vSJ6N",
+            "id": "ChatOutput-jNfAw",
             "inputTypes": [
               "Data",
               "DataFrame",
@@ -110,18 +80,48 @@
             "type": "other"
           }
         },
-        "id": "reactflow__edge-Agent-9FjKL{œdataTypeœ:œAgentœ,œidœ:œAgent-9FjKLœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-vSJ6N{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-vSJ6Nœ,œinputTypesœ:[œDataœ,œDataFrameœ,œMessageœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-Agent-ZH2Rd{œdataTypeœ:œAgentœ,œidœ:œAgent-ZH2Rdœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-jNfAw{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-jNfAwœ,œinputTypesœ:[œDataœ,œDataFrameœ,œMessageœ],œtypeœ:œotherœ}",
         "selected": false,
-        "source": "Agent-9FjKL",
-        "sourceHandle": "{œdataTypeœ: œAgentœ, œidœ: œAgent-9FjKLœ, œnameœ: œresponseœ, œoutput_typesœ: [œMessageœ]}",
-        "target": "ChatOutput-vSJ6N",
-        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œChatOutput-vSJ6Nœ, œinputTypesœ: [œDataœ, œDataFrameœ, œMessageœ], œtypeœ: œotherœ}"
+        "source": "Agent-ZH2Rd",
+        "sourceHandle": "{œdataTypeœ: œAgentœ, œidœ: œAgent-ZH2Rdœ, œnameœ: œresponseœ, œoutput_typesœ: [œMessageœ]}",
+        "target": "ChatOutput-jNfAw",
+        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œChatOutput-jNfAwœ, œinputTypesœ: [œDataœ, œDataFrameœ, œMessageœ], œtypeœ: œotherœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ChatOutput",
+            "id": "ChatOutput-jNfAw",
+            "name": "message",
+            "output_types": [
+              "Message"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "input",
+            "id": "SaveToFile-VVVVb",
+            "inputTypes": [
+              "Data",
+              "DataFrame",
+              "Message"
+            ],
+            "type": "other"
+          }
+        },
+        "id": "xy-edge__ChatOutput-jNfAw{œdataTypeœ:œChatOutputœ,œidœ:œChatOutput-jNfAwœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-SaveToFile-VVVVb{œfieldNameœ:œinputœ,œidœ:œSaveToFile-VVVVbœ,œinputTypesœ:[œDataœ,œDataFrameœ,œMessageœ],œtypeœ:œotherœ}",
+        "selected": false,
+        "source": "ChatOutput-jNfAw",
+        "sourceHandle": "{œdataTypeœ: œChatOutputœ, œidœ: œChatOutput-jNfAwœ, œnameœ: œmessageœ, œoutput_typesœ: [œMessageœ]}",
+        "target": "SaveToFile-VVVVb",
+        "targetHandle": "{œfieldNameœ: œinputœ, œidœ: œSaveToFile-VVVVbœ, œinputTypesœ: [œDataœ, œDataFrameœ, œMessageœ], œtypeœ: œotherœ}"
       }
     ],
     "nodes": [
       {
         "data": {
-          "id": "note-xj91O",
+          "id": "note-40ntb",
           "node": {
             "description": "### 💡 Add your OpenAI API key here",
             "display_name": "",
@@ -133,7 +133,7 @@
           "type": "note"
         },
         "dragging": false,
-        "id": "note-xj91O",
+        "id": "note-40ntb",
         "measured": {
           "height": 324,
           "width": 324
@@ -147,7 +147,7 @@
       },
       {
         "data": {
-          "id": "note-iTnRZ",
+          "id": "note-UXZI9",
           "node": {
             "description": "### 💡 Add your AgentQL API key here",
             "display_name": "",
@@ -160,7 +160,7 @@
         },
         "dragging": false,
         "height": 346,
-        "id": "note-iTnRZ",
+        "id": "note-UXZI9",
         "measured": {
           "height": 346,
           "width": 324
@@ -176,7 +176,7 @@
         "data": {
           "description": "Uses AgentQL API to extract structured data from a given URL.",
           "display_name": "AgentQL Query Data",
-          "id": "AgentQL-tQP4B",
+          "id": "AgentQL-064NO",
           "node": {
             "base_classes": [
               "Data"
@@ -202,9 +202,26 @@
             ],
             "frozen": false,
             "icon": "AgentQL",
+            "last_updated": "2025-09-30T16:16:12.099Z",
             "legacy": false,
             "lf_version": "1.4.3",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "c88b73d7a17d",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "httpx",
+                    "version": "0.28.1"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 2
+              },
+              "module": "custom_components.extract_web_data"
+            },
             "minimized": false,
             "output_types": [],
             "outputs": [
@@ -236,7 +253,7 @@
                 "dynamic": false,
                 "info": "Your AgentQL API key from dev.agentql.com",
                 "input_types": [],
-                "load_from_db": false,
+                "load_from_db": true,
                 "name": "api_key",
                 "password": true,
                 "placeholder": "",
@@ -244,7 +261,7 @@
                 "show": true,
                 "title_case": false,
                 "type": "str",
-                "value": ""
+                "value": "AGENTQL_API_KEY"
               },
               "code": {
                 "advanced": true,
@@ -514,7 +531,7 @@
           "type": "AgentQL"
         },
         "dragging": false,
-        "id": "AgentQL-tQP4B",
+        "id": "AgentQL-064NO",
         "measured": {
           "height": 316,
           "width": 320
@@ -528,7 +545,7 @@
       },
       {
         "data": {
-          "id": "ChatInput-ltBH6",
+          "id": "ChatInput-S2wgk",
           "node": {
             "base_classes": [
               "Message"
@@ -557,7 +574,19 @@
             "key": "ChatInput",
             "legacy": false,
             "lf_version": "1.4.3",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "88cc3fef8f84",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 1
+              },
+              "module": "custom_components.chat_input"
+            },
             "minimized": true,
             "output_types": [],
             "outputs": [
@@ -759,7 +788,7 @@
           "type": "ChatInput"
         },
         "dragging": false,
-        "id": "ChatInput-ltBH6",
+        "id": "ChatInput-S2wgk",
         "measured": {
           "height": 48,
           "width": 192
@@ -773,7 +802,7 @@
       },
       {
         "data": {
-          "id": "note-KwYd0",
+          "id": "note-reU70",
           "node": {
             "description": "# News Aggregator\n\nThis flow extracts structured data from a URL and saves it into a JSON file.\n\n## Prerequisites\n\n* **[AgentQL API Key](https://dev.agentql.com/api-keys)**\n* **[OpenAI API Key](https://platform.openai.com/)**\n\n## Quick Start\n\n1. Add your [AgentQL API Key](https://dev.agentql.com/api-keys) to the **AgentQL** component.\n2. Add your [OpenAI API Key](https://platform.openai.com/) to the **Agent** component.\n3. Click **Playground** and enter a question.\n\nThe **Agent** component populates the **AgentQL** component's **URL** and **Query** fields, and returns a structured response to your question. Then the extracted data is saved into a JSON file `news-aggregated.json`, which can be found in your current project directory.",
             "display_name": "",
@@ -785,7 +814,7 @@
           "type": "note"
         },
         "dragging": false,
-        "id": "note-KwYd0",
+        "id": "note-reU70",
         "measured": {
           "height": 696,
           "width": 575
@@ -794,12 +823,12 @@
           "x": 135.77506751324216,
           "y": 54.23110716380944
         },
-        "selected": true,
+        "selected": false,
         "type": "noteNode"
       },
       {
         "data": {
-          "id": "ChatOutput-vSJ6N",
+          "id": "ChatOutput-jNfAw",
           "node": {
             "base_classes": [
               "Message"
@@ -827,7 +856,27 @@
             "icon": "MessagesSquare",
             "legacy": false,
             "lf_version": "1.4.3",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "1f36a5fbc6bd",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "orjson",
+                    "version": "3.10.15"
+                  },
+                  {
+                    "name": "fastapi",
+                    "version": "0.123.0"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 3
+              },
+              "module": "custom_components.chat_output"
+            },
             "minimized": true,
             "output_types": [],
             "outputs": [
@@ -1007,7 +1056,7 @@
           "type": "ChatOutput"
         },
         "dragging": false,
-        "id": "ChatOutput-vSJ6N",
+        "id": "ChatOutput-jNfAw",
         "measured": {
           "height": 48,
           "width": 192
@@ -1021,157 +1070,7 @@
       },
       {
         "data": {
-          "id": "SaveToFile-Jknwv",
-          "node": {
-            "base_classes": [
-              "Message"
-            ],
-            "beta": false,
-            "conditional_paths": [],
-            "custom_fields": {},
-            "description": "Save data to a local file in the selected format.",
-            "display_name": "Save File",
-            "documentation": "",
-            "edited": false,
-            "field_order": [
-              "input",
-              "file_name",
-              "file_format"
-            ],
-            "frozen": false,
-            "icon": "save",
-            "legacy": false,
-            "lf_version": "1.4.3",
-            "metadata": {},
-            "minimized": false,
-            "output_types": [],
-            "outputs": [
-              {
-                "allows_loop": false,
-                "cache": true,
-                "display_name": "File Path",
-                "group_outputs": false,
-                "method": "save_to_file",
-                "name": "message",
-                "selected": "Message",
-                "tool_mode": true,
-                "types": [
-                  "Message"
-                ],
-                "value": "__UNDEFINED__"
-              }
-            ],
-            "pinned": false,
-            "template": {
-              "_type": "Component",
-              "code": {
-                "advanced": true,
-                "dynamic": true,
-                "fileTypes": [],
-                "file_path": "",
-                "info": "",
-                "list": false,
-                "load_from_db": false,
-                "multiline": true,
-                "name": "code",
-                "password": false,
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "type": "code",
-                "value": "import json\nfrom collections.abc import AsyncIterator, Iterator\nfrom pathlib import Path\n\nimport orjson\nimport pandas as pd\nfrom fastapi import UploadFile\nfrom fastapi.encoders import jsonable_encoder\n\nfrom langflow.api.v2.files import upload_user_file\nfrom langflow.custom import Component\nfrom langflow.io import DropdownInput, HandleInput, StrInput\nfrom langflow.schema import Data, DataFrame, Message\nfrom langflow.services.database.models.user.crud import get_user_by_id\nfrom langflow.services.deps import get_settings_service, get_storage_service, session_scope\nfrom langflow.template.field.base import Output\n\n\nclass SaveToFileComponent(Component):\n    display_name = \"Save File\"\n    description = \"Save data to a local file in the selected format.\"\n    documentation: str = \"https://docs.langflow.org/components-processing#save-file\"\n    icon = \"save\"\n    name = \"SaveToFile\"\n\n    # File format options for different types\n    DATA_FORMAT_CHOICES = [\"csv\", \"excel\", \"json\", \"markdown\"]\n    MESSAGE_FORMAT_CHOICES = [\"txt\", \"json\", \"markdown\"]\n\n    inputs = [\n        HandleInput(\n            name=\"input\",\n            display_name=\"Input\",\n            info=\"The input to save.\",\n            dynamic=True,\n            input_types=[\"Data\", \"DataFrame\", \"Message\"],\n            required=True,\n        ),\n        StrInput(\n            name=\"file_name\",\n            display_name=\"File Name\",\n            info=\"Name file will be saved as (without extension).\",\n            required=True,\n        ),\n        DropdownInput(\n            name=\"file_format\",\n            display_name=\"File Format\",\n            options=list(dict.fromkeys(DATA_FORMAT_CHOICES + MESSAGE_FORMAT_CHOICES)),\n            info=\"Select the file format to save the input. If not provided, the default format will be used.\",\n            value=\"\",\n            advanced=True,\n        ),\n    ]\n\n    outputs = [Output(display_name=\"File Path\", name=\"message\", method=\"save_to_file\")]\n\n    async def save_to_file(self) -> Message:\n        \"\"\"Save the input to a file and upload it, returning a confirmation message.\"\"\"\n        # Validate inputs\n        if not self.file_name:\n            msg = \"File name must be provided.\"\n            raise ValueError(msg)\n        if not self._get_input_type():\n            msg = \"Input type is not set.\"\n            raise ValueError(msg)\n\n        # Validate file format based on input type\n        file_format = self.file_format or self._get_default_format()\n        allowed_formats = (\n            self.MESSAGE_FORMAT_CHOICES if self._get_input_type() == \"Message\" else self.DATA_FORMAT_CHOICES\n        )\n        if file_format not in allowed_formats:\n            msg = f\"Invalid file format '{file_format}' for {self._get_input_type()}. Allowed: {allowed_formats}\"\n            raise ValueError(msg)\n\n        # Prepare file path\n        file_path = Path(self.file_name).expanduser()\n        if not file_path.parent.exists():\n            file_path.parent.mkdir(parents=True, exist_ok=True)\n        file_path = self._adjust_file_path_with_format(file_path, file_format)\n\n        # Save the input to file based on type\n        if self._get_input_type() == \"DataFrame\":\n            confirmation = self._save_dataframe(self.input, file_path, file_format)\n        elif self._get_input_type() == \"Data\":\n            confirmation = self._save_data(self.input, file_path, file_format)\n        elif self._get_input_type() == \"Message\":\n            confirmation = await self._save_message(self.input, file_path, file_format)\n        else:\n            msg = f\"Unsupported input type: {self._get_input_type()}\"\n            raise ValueError(msg)\n\n        # Upload the saved file\n        await self._upload_file(file_path)\n\n        # Return the final file path and confirmation message\n        final_path = Path.cwd() / file_path if not file_path.is_absolute() else file_path\n\n        return Message(text=f\"{confirmation} at {final_path}\")\n\n    def _get_input_type(self) -> str:\n        \"\"\"Determine the input type based on the provided input.\"\"\"\n        # Use exact type checking (type() is) instead of isinstance() to avoid inheritance issues.\n        # Since Message inherits from Data, isinstance(message, Data) would return True for Message objects,\n        # causing Message inputs to be incorrectly identified as Data type.\n        if type(self.input) is DataFrame:\n            return \"DataFrame\"\n        if type(self.input) is Message:\n            return \"Message\"\n        if type(self.input) is Data:\n            return \"Data\"\n        msg = f\"Unsupported input type: {type(self.input)}\"\n        raise ValueError(msg)\n\n    def _get_default_format(self) -> str:\n        \"\"\"Return the default file format based on input type.\"\"\"\n        if self._get_input_type() == \"DataFrame\":\n            return \"csv\"\n        if self._get_input_type() == \"Data\":\n            return \"json\"\n        if self._get_input_type() == \"Message\":\n            return \"json\"\n        return \"json\"  # Fallback\n\n    def _adjust_file_path_with_format(self, path: Path, fmt: str) -> Path:\n        \"\"\"Adjust the file path to include the correct extension.\"\"\"\n        file_extension = path.suffix.lower().lstrip(\".\")\n        if fmt == \"excel\":\n            return Path(f\"{path}.xlsx\").expanduser() if file_extension not in [\"xlsx\", \"xls\"] else path\n        return Path(f\"{path}.{fmt}\").expanduser() if file_extension != fmt else path\n\n    async def _upload_file(self, file_path: Path) -> None:\n        \"\"\"Upload the saved file using the upload_user_file service.\"\"\"\n        if not file_path.exists():\n            msg = f\"File not found: {file_path}\"\n            raise FileNotFoundError(msg)\n\n        with file_path.open(\"rb\") as f:\n            async with session_scope() as db:\n                if not self.user_id:\n                    msg = \"User ID is required for file saving.\"\n                    raise ValueError(msg)\n                current_user = await get_user_by_id(db, self.user_id)\n\n                await upload_user_file(\n                    file=UploadFile(filename=file_path.name, file=f, size=file_path.stat().st_size),\n                    session=db,\n                    current_user=current_user,\n                    storage_service=get_storage_service(),\n                    settings_service=get_settings_service(),\n                )\n\n    def _save_dataframe(self, dataframe: DataFrame, path: Path, fmt: str) -> str:\n        \"\"\"Save a DataFrame to the specified file format.\"\"\"\n        if fmt == \"csv\":\n            dataframe.to_csv(path, index=False)\n        elif fmt == \"excel\":\n            dataframe.to_excel(path, index=False, engine=\"openpyxl\")\n        elif fmt == \"json\":\n            dataframe.to_json(path, orient=\"records\", indent=2)\n        elif fmt == \"markdown\":\n            path.write_text(dataframe.to_markdown(index=False), encoding=\"utf-8\")\n        else:\n            msg = f\"Unsupported DataFrame format: {fmt}\"\n            raise ValueError(msg)\n        return f\"DataFrame saved successfully as '{path}'\"\n\n    def _save_data(self, data: Data, path: Path, fmt: str) -> str:\n        \"\"\"Save a Data object to the specified file format.\"\"\"\n        if fmt == \"csv\":\n            pd.DataFrame(data.data).to_csv(path, index=False)\n        elif fmt == \"excel\":\n            pd.DataFrame(data.data).to_excel(path, index=False, engine=\"openpyxl\")\n        elif fmt == \"json\":\n            path.write_text(\n                orjson.dumps(jsonable_encoder(data.data), option=orjson.OPT_INDENT_2).decode(\"utf-8\"), encoding=\"utf-8\"\n            )\n        elif fmt == \"markdown\":\n            path.write_text(pd.DataFrame(data.data).to_markdown(index=False), encoding=\"utf-8\")\n        else:\n            msg = f\"Unsupported Data format: {fmt}\"\n            raise ValueError(msg)\n        return f\"Data saved successfully as '{path}'\"\n\n    async def _save_message(self, message: Message, path: Path, fmt: str) -> str:\n        \"\"\"Save a Message to the specified file format, handling async iterators.\"\"\"\n        content = \"\"\n        if message.text is None:\n            content = \"\"\n        elif isinstance(message.text, AsyncIterator):\n            async for item in message.text:\n                content += str(item) + \" \"\n            content = content.strip()\n        elif isinstance(message.text, Iterator):\n            content = \" \".join(str(item) for item in message.text)\n        else:\n            content = str(message.text)\n\n        if fmt == \"txt\":\n            path.write_text(content, encoding=\"utf-8\")\n        elif fmt == \"json\":\n            path.write_text(json.dumps({\"message\": content}, indent=2), encoding=\"utf-8\")\n        elif fmt == \"markdown\":\n            path.write_text(f\"**Message:**\\n\\n{content}\", encoding=\"utf-8\")\n        else:\n            msg = f\"Unsupported Message format: {fmt}\"\n            raise ValueError(msg)\n        return f\"Message saved successfully as '{path}'\"\n"
-              },
-              "file_format": {
-                "_input_type": "DropdownInput",
-                "advanced": true,
-                "combobox": false,
-                "dialog_inputs": {},
-                "display_name": "File Format",
-                "dynamic": false,
-                "info": "Select the file format to save the input. If not provided, the default format will be used.",
-                "name": "file_format",
-                "options": [
-                  "csv",
-                  "excel",
-                  "json",
-                  "markdown",
-                  "txt"
-                ],
-                "options_metadata": [],
-                "placeholder": "",
-                "required": false,
-                "show": true,
-                "title_case": false,
-                "toggle": false,
-                "tool_mode": false,
-                "trace_as_metadata": true,
-                "type": "str",
-                "value": ""
-              },
-              "file_name": {
-                "_input_type": "StrInput",
-                "advanced": false,
-                "display_name": "File Name",
-                "dynamic": false,
-                "info": "Name file will be saved as (without extension).",
-                "list": false,
-                "list_add_label": "Add More",
-                "load_from_db": false,
-                "name": "file_name",
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "tool_mode": false,
-                "trace_as_metadata": true,
-                "type": "str",
-                "value": "news-aggregated"
-              },
-              "input": {
-                "_input_type": "HandleInput",
-                "advanced": false,
-                "display_name": "Input",
-                "dynamic": true,
-                "info": "The input to save.",
-                "input_types": [
-                  "Data",
-                  "DataFrame",
-                  "Message"
-                ],
-                "list": false,
-                "list_add_label": "Add More",
-                "name": "input",
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "trace_as_metadata": true,
-                "type": "other",
-                "value": ""
-              }
-            },
-            "tool_mode": false
-          },
-          "showNode": true,
-          "type": "SaveToFile"
-        },
-        "dragging": false,
-        "id": "SaveToFile-Jknwv",
-        "measured": {
-          "height": 248,
-          "width": 320
-        },
-        "position": {
-          "x": 1796.3663744322935,
-          "y": 374.05935092875194
-        },
-        "selected": false,
-        "type": "genericNode"
-      },
-      {
-        "data": {
-          "id": "Agent-9FjKL",
+          "id": "Agent-ZH2Rd",
           "node": {
             "base_classes": [
               "Message"
@@ -1209,8 +1108,29 @@
             "frozen": false,
             "icon": "bot",
             "key": "Agent",
+            "last_updated": "2025-09-30T16:16:12.101Z",
             "legacy": false,
-            "metadata": {},
+            "metadata": {
+              "code_hash": "6e76cf95a2a2",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langchain_core",
+                    "version": "0.3.80"
+                  },
+                  {
+                    "name": "pydantic",
+                    "version": "2.11.10"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 3
+              },
+              "module": "custom_components.agent"
+            },
             "minimized": false,
             "output_types": [],
             "outputs": [
@@ -1313,16 +1233,25 @@
                   },
                   {
                     "icon": "OpenAI"
+                  },
+                  {
+                    "icon": "WatsonxAI"
+                  },
+                  {
+                    "icon": "Ollama"
                   }
                 ],
+                "override_skip": false,
                 "placeholder": "",
                 "real_time_refresh": true,
+                "refresh_button": false,
                 "required": false,
                 "show": true,
                 "title_case": false,
                 "toggle": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": true,
                 "type": "str",
                 "value": "OpenAI"
               },
@@ -1455,12 +1384,14 @@
                 "list": false,
                 "list_add_label": "Add More",
                 "name": "max_retries",
+                "override_skip": false,
                 "placeholder": "",
                 "required": false,
                 "show": true,
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": true,
                 "type": "int",
                 "value": 5
               },
@@ -1473,10 +1404,11 @@
                 "list": false,
                 "list_add_label": "Add More",
                 "name": "max_tokens",
+                "override_skip": false,
                 "placeholder": "",
                 "range_spec": {
-                  "max": 128000,
-                  "min": 0,
+                  "max": 128000.0,
+                  "min": 0.0,
                   "step": 0.1,
                   "step_type": "float"
                 },
@@ -1485,6 +1417,7 @@
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": true,
                 "type": "int",
                 "value": ""
               },
@@ -1497,12 +1430,14 @@
                 "list": false,
                 "list_add_label": "Add More",
                 "name": "model_kwargs",
+                "override_skip": false,
                 "placeholder": "",
                 "required": false,
                 "show": true,
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_input": true,
+                "track_in_telemetry": false,
                 "type": "dict",
                 "value": {}
               },
@@ -1513,6 +1448,7 @@
                 "dialog_inputs": {},
                 "display_name": "Model Name",
                 "dynamic": false,
+                "external_options": {},
                 "info": "To see the model names, first choose a provider. Then, enter your API key and click the refresh button next to the model name.",
                 "name": "model_name",
                 "options": [
@@ -1525,6 +1461,7 @@
                   "gpt-4-turbo-preview",
                   "gpt-4",
                   "gpt-3.5-turbo",
+                  "gpt-5.1",
                   "gpt-5",
                   "gpt-5-mini",
                   "gpt-5-nano",
@@ -1537,6 +1474,7 @@
                   "o4-mini-high"
                 ],
                 "options_metadata": [],
+                "override_skip": false,
                 "placeholder": "",
                 "real_time_refresh": false,
                 "required": false,
@@ -1545,8 +1483,9 @@
                 "toggle": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": true,
                 "type": "str",
-                "value": "gpt-4.1"
+                "value": "gpt-4o-mini"
               },
               "n_messages": {
                 "_input_type": "IntInput",
@@ -1576,12 +1515,14 @@
                 "list_add_label": "Add More",
                 "load_from_db": false,
                 "name": "openai_api_base",
+                "override_skip": false,
                 "placeholder": "",
                 "required": false,
                 "show": true,
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": false,
                 "type": "str",
                 "value": ""
               },
@@ -1598,69 +1539,47 @@
                 "required": false,
                 "show": true,
                 "table_icon": "Table",
-                "table_schema": {
-                  "columns": [
-                    {
-                      "default": "field",
-                      "description": "Specify the name of the output field.",
-                      "disable_edit": false,
-                      "display_name": "Name",
-                      "edit_mode": "inline",
-                      "filterable": true,
-                      "formatter": "text",
-                      "hidden": false,
-                      "name": "name",
-                      "sortable": true,
-                      "type": "str"
-                    },
-                    {
-                      "default": "description of field",
-                      "description": "Describe the purpose of the output field.",
-                      "disable_edit": false,
-                      "display_name": "Description",
-                      "edit_mode": "popover",
-                      "filterable": true,
-                      "formatter": "text",
-                      "hidden": false,
-                      "name": "description",
-                      "sortable": true,
-                      "type": "str"
-                    },
-                    {
-                      "default": "str",
-                      "description": "Indicate the data type of the output field (e.g., str, int, float, bool, dict).",
-                      "disable_edit": false,
-                      "display_name": "Type",
-                      "edit_mode": "inline",
-                      "filterable": true,
-                      "formatter": "text",
-                      "hidden": false,
-                      "name": "type",
-                      "options": [
-                        "str",
-                        "int",
-                        "float",
-                        "bool",
-                        "dict"
-                      ],
-                      "sortable": true,
-                      "type": "str"
-                    },
-                    {
-                      "default": false,
-                      "description": "Set to True if this output field should be a list of the specified type.",
-                      "disable_edit": false,
-                      "display_name": "As List",
-                      "edit_mode": "inline",
-                      "filterable": true,
-                      "formatter": "boolean",
-                      "hidden": false,
-                      "name": "multiple",
-                      "sortable": true,
-                      "type": "boolean"
-                    }
-                  ]
-                },
+                "table_schema": [
+                  {
+                    "default": "field",
+                    "description": "Specify the name of the output field.",
+                    "display_name": "Name",
+                    "edit_mode": "inline",
+                    "name": "name",
+                    "type": "str"
+                  },
+                  {
+                    "default": "description of field",
+                    "description": "Describe the purpose of the output field.",
+                    "display_name": "Description",
+                    "edit_mode": "popover",
+                    "name": "description",
+                    "type": "str"
+                  },
+                  {
+                    "default": "str",
+                    "description": "Indicate the data type of the output field (e.g., str, int, float, bool, dict).",
+                    "display_name": "Type",
+                    "edit_mode": "inline",
+                    "name": "type",
+                    "options": [
+                      "str",
+                      "int",
+                      "float",
+                      "bool",
+                      "dict"
+                    ],
+                    "type": "str"
+                  },
+                  {
+                    "default": "False",
+                    "description": "Set to True if this output field should be a list of the specified type.",
+                    "display_name": "As List",
+                    "edit_mode": "inline",
+                    "name": "multiple",
+                    "type": "boolean"
+                  }
+                ],
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
@@ -1678,12 +1597,14 @@
                 "list": false,
                 "list_add_label": "Add More",
                 "name": "seed",
+                "override_skip": false,
                 "placeholder": "",
                 "required": false,
                 "show": true,
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": true,
                 "type": "int",
                 "value": 1
               },
@@ -1723,10 +1644,11 @@
                 "min_label": "",
                 "min_label_icon": "",
                 "name": "temperature",
+                "override_skip": false,
                 "placeholder": "",
                 "range_spec": {
-                  "max": 1,
-                  "min": 0,
+                  "max": 1.0,
+                  "min": 0.0,
                   "step": 0.01,
                   "step_type": "float"
                 },
@@ -1737,6 +1659,7 @@
                 "slider_input": false,
                 "title_case": false,
                 "tool_mode": false,
+                "track_in_telemetry": false,
                 "type": "slider",
                 "value": 0.1
               },
@@ -1749,12 +1672,14 @@
                 "list": false,
                 "list_add_label": "Add More",
                 "name": "timeout",
+                "override_skip": false,
                 "placeholder": "",
                 "required": false,
                 "show": true,
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": true,
                 "type": "int",
                 "value": 700
               },
@@ -1803,7 +1728,7 @@
           "type": "Agent"
         },
         "dragging": false,
-        "id": "Agent-9FjKL",
+        "id": "Agent-ZH2Rd",
         "measured": {
           "height": 594,
           "width": 320
@@ -1814,19 +1739,206 @@
         },
         "selected": false,
         "type": "genericNode"
+      },
+      {
+        "data": {
+          "id": "SaveToFile-VVVVb",
+          "node": {
+            "base_classes": [
+              "Message"
+            ],
+            "beta": false,
+            "conditional_paths": [],
+            "custom_fields": {},
+            "description": "Save data to a local file in the selected format.",
+            "display_name": "Write File",
+            "documentation": "https://docs.langflow.org/components-processing#save-file",
+            "edited": false,
+            "field_order": [
+              "storage_location",
+              "input",
+              "file_name",
+              "local_format",
+              "aws_format",
+              "gdrive_format",
+              "aws_access_key_id",
+              "aws_secret_access_key",
+              "bucket_name",
+              "aws_region",
+              "s3_prefix",
+              "service_account_key",
+              "folder_id"
+            ],
+            "frozen": false,
+            "icon": "save",
+            "last_updated": "2025-09-30T16:16:26.172Z",
+            "legacy": false,
+            "metadata": {
+              "code_hash": "1bcc6faaaa62",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "orjson",
+                    "version": "3.10.15"
+                  },
+                  {
+                    "name": "pandas",
+                    "version": "2.2.3"
+                  },
+                  {
+                    "name": "fastapi",
+                    "version": "0.123.0"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 4
+              },
+              "module": "custom_components.save_file"
+            },
+            "minimized": false,
+            "output_types": [],
+            "outputs": [
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "File Path",
+                "group_outputs": false,
+                "method": "save_to_file",
+                "name": "message",
+                "selected": "Message",
+                "tool_mode": true,
+                "types": [
+                  "Message"
+                ],
+                "value": "__UNDEFINED__"
+              }
+            ],
+            "pinned": false,
+            "template": {
+              "_type": "Component",
+              "code": {
+                "advanced": true,
+                "dynamic": true,
+                "fileTypes": [],
+                "file_path": "",
+                "info": "",
+                "list": false,
+                "load_from_db": false,
+                "multiline": true,
+                "name": "code",
+                "password": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "code",
+                "value": "import json\nfrom collections.abc import AsyncIterator, Iterator\nfrom pathlib import Path\n\nimport orjson\nimport pandas as pd\nfrom fastapi import UploadFile\nfrom fastapi.encoders import jsonable_encoder\n\nfrom langflow.api.v2.files import upload_user_file\nfrom langflow.custom import Component\nfrom langflow.io import DropdownInput, HandleInput, StrInput\nfrom langflow.schema import Data, DataFrame, Message\nfrom langflow.services.database.models.user.crud import get_user_by_id\nfrom langflow.services.deps import get_settings_service, get_storage_service, session_scope\nfrom langflow.template.field.base import Output\n\n\nclass SaveToFileComponent(Component):\n    display_name = \"Save File\"\n    description = \"Save data to a local file in the selected format.\"\n    documentation: str = \"https://docs.langflow.org/components-processing#save-file\"\n    icon = \"save\"\n    name = \"SaveToFile\"\n\n    # File format options for different types\n    DATA_FORMAT_CHOICES = [\"csv\", \"excel\", \"json\", \"markdown\"]\n    MESSAGE_FORMAT_CHOICES = [\"txt\", \"json\", \"markdown\"]\n\n    inputs = [\n        HandleInput(\n            name=\"input\",\n            display_name=\"Input\",\n            info=\"The input to save.\",\n            dynamic=True,\n            input_types=[\"Data\", \"DataFrame\", \"Message\"],\n            required=True,\n        ),\n        StrInput(\n            name=\"file_name\",\n            display_name=\"File Name\",\n            info=\"Name file will be saved as (without extension).\",\n            required=True,\n        ),\n        DropdownInput(\n            name=\"file_format\",\n            display_name=\"File Format\",\n            options=list(dict.fromkeys(DATA_FORMAT_CHOICES + MESSAGE_FORMAT_CHOICES)),\n            info=\"Select the file format to save the input. If not provided, the default format will be used.\",\n            value=\"\",\n            advanced=True,\n        ),\n    ]\n\n    outputs = [Output(display_name=\"File Path\", name=\"message\", method=\"save_to_file\")]\n\n    async def save_to_file(self) -> Message:\n        \"\"\"Save the input to a file and upload it, returning a confirmation message.\"\"\"\n        # Validate inputs\n        if not self.file_name:\n            msg = \"File name must be provided.\"\n            raise ValueError(msg)\n        if not self._get_input_type():\n            msg = \"Input type is not set.\"\n            raise ValueError(msg)\n\n        # Validate file format based on input type\n        file_format = self.file_format or self._get_default_format()\n        allowed_formats = (\n            self.MESSAGE_FORMAT_CHOICES if self._get_input_type() == \"Message\" else self.DATA_FORMAT_CHOICES\n        )\n        if file_format not in allowed_formats:\n            msg = f\"Invalid file format '{file_format}' for {self._get_input_type()}. Allowed: {allowed_formats}\"\n            raise ValueError(msg)\n\n        # Prepare file path\n        file_path = Path(self.file_name).expanduser()\n        if not file_path.parent.exists():\n            file_path.parent.mkdir(parents=True, exist_ok=True)\n        file_path = self._adjust_file_path_with_format(file_path, file_format)\n\n        # Save the input to file based on type\n        if self._get_input_type() == \"DataFrame\":\n            confirmation = self._save_dataframe(self.input, file_path, file_format)\n        elif self._get_input_type() == \"Data\":\n            confirmation = self._save_data(self.input, file_path, file_format)\n        elif self._get_input_type() == \"Message\":\n            confirmation = await self._save_message(self.input, file_path, file_format)\n        else:\n            msg = f\"Unsupported input type: {self._get_input_type()}\"\n            raise ValueError(msg)\n\n        # Upload the saved file\n        await self._upload_file(file_path)\n\n        # Return the final file path and confirmation message\n        final_path = Path.cwd() / file_path if not file_path.is_absolute() else file_path\n\n        return Message(text=f\"{confirmation} at {final_path}\")\n\n    def _get_input_type(self) -> str:\n        \"\"\"Determine the input type based on the provided input.\"\"\"\n        # Use exact type checking (type() is) instead of isinstance() to avoid inheritance issues.\n        # Since Message inherits from Data, isinstance(message, Data) would return True for Message objects,\n        # causing Message inputs to be incorrectly identified as Data type.\n        if type(self.input) is DataFrame:\n            return \"DataFrame\"\n        if type(self.input) is Message:\n            return \"Message\"\n        if type(self.input) is Data:\n            return \"Data\"\n        msg = f\"Unsupported input type: {type(self.input)}\"\n        raise ValueError(msg)\n\n    def _get_default_format(self) -> str:\n        \"\"\"Return the default file format based on input type.\"\"\"\n        if self._get_input_type() == \"DataFrame\":\n            return \"csv\"\n        if self._get_input_type() == \"Data\":\n            return \"json\"\n        if self._get_input_type() == \"Message\":\n            return \"json\"\n        return \"json\"  # Fallback\n\n    def _adjust_file_path_with_format(self, path: Path, fmt: str) -> Path:\n        \"\"\"Adjust the file path to include the correct extension.\"\"\"\n        file_extension = path.suffix.lower().lstrip(\".\")\n        if fmt == \"excel\":\n            return Path(f\"{path}.xlsx\").expanduser() if file_extension not in [\"xlsx\", \"xls\"] else path\n        return Path(f\"{path}.{fmt}\").expanduser() if file_extension != fmt else path\n\n    async def _upload_file(self, file_path: Path) -> None:\n        \"\"\"Upload the saved file using the upload_user_file service.\"\"\"\n        if not file_path.exists():\n            msg = f\"File not found: {file_path}\"\n            raise FileNotFoundError(msg)\n\n        with file_path.open(\"rb\") as f:\n            async with session_scope() as db:\n                if not self.user_id:\n                    msg = \"User ID is required for file saving.\"\n                    raise ValueError(msg)\n                current_user = await get_user_by_id(db, self.user_id)\n\n                await upload_user_file(\n                    file=UploadFile(filename=file_path.name, file=f, size=file_path.stat().st_size),\n                    session=db,\n                    current_user=current_user,\n                    storage_service=get_storage_service(),\n                    settings_service=get_settings_service(),\n                )\n\n    def _save_dataframe(self, dataframe: DataFrame, path: Path, fmt: str) -> str:\n        \"\"\"Save a DataFrame to the specified file format.\"\"\"\n        if fmt == \"csv\":\n            dataframe.to_csv(path, index=False)\n        elif fmt == \"excel\":\n            dataframe.to_excel(path, index=False, engine=\"openpyxl\")\n        elif fmt == \"json\":\n            dataframe.to_json(path, orient=\"records\", indent=2)\n        elif fmt == \"markdown\":\n            path.write_text(dataframe.to_markdown(index=False), encoding=\"utf-8\")\n        else:\n            msg = f\"Unsupported DataFrame format: {fmt}\"\n            raise ValueError(msg)\n        return f\"DataFrame saved successfully as '{path}'\"\n\n    def _save_data(self, data: Data, path: Path, fmt: str) -> str:\n        \"\"\"Save a Data object to the specified file format.\"\"\"\n        if fmt == \"csv\":\n            pd.DataFrame(data.data).to_csv(path, index=False)\n        elif fmt == \"excel\":\n            pd.DataFrame(data.data).to_excel(path, index=False, engine=\"openpyxl\")\n        elif fmt == \"json\":\n            path.write_text(\n                orjson.dumps(jsonable_encoder(data.data), option=orjson.OPT_INDENT_2).decode(\"utf-8\"), encoding=\"utf-8\"\n            )\n        elif fmt == \"markdown\":\n            path.write_text(pd.DataFrame(data.data).to_markdown(index=False), encoding=\"utf-8\")\n        else:\n            msg = f\"Unsupported Data format: {fmt}\"\n            raise ValueError(msg)\n        return f\"Data saved successfully as '{path}'\"\n\n    async def _save_message(self, message: Message, path: Path, fmt: str) -> str:\n        \"\"\"Save a Message to the specified file format, handling async iterators.\"\"\"\n        content = \"\"\n        if message.text is None:\n            content = \"\"\n        elif isinstance(message.text, AsyncIterator):\n            async for item in message.text:\n                content += str(item) + \" \"\n            content = content.strip()\n        elif isinstance(message.text, Iterator):\n            content = \" \".join(str(item) for item in message.text)\n        else:\n            content = str(message.text)\n\n        if fmt == \"txt\":\n            path.write_text(content, encoding=\"utf-8\")\n        elif fmt == \"json\":\n            path.write_text(json.dumps({\"message\": content}, indent=2), encoding=\"utf-8\")\n        elif fmt == \"markdown\":\n            path.write_text(f\"**Message:**\\n\\n{content}\", encoding=\"utf-8\")\n        else:\n            msg = f\"Unsupported Message format: {fmt}\"\n            raise ValueError(msg)\n        return f\"Message saved successfully as '{path}'\"\n"
+              },
+              "file_format": {
+                "_input_type": "DropdownInput",
+                "advanced": true,
+                "combobox": false,
+                "dialog_inputs": {},
+                "display_name": "File Format",
+                "dynamic": false,
+                "external_options": {},
+                "info": "Select the file format to save the input. If not provided, the default format will be used.",
+                "name": "file_format",
+                "options": [
+                  "csv",
+                  "excel",
+                  "json",
+                  "markdown",
+                  "txt"
+                ],
+                "options_metadata": [],
+                "override_skip": false,
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "toggle": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": true,
+                "type": "str",
+                "value": ""
+              },
+              "file_name": {
+                "_input_type": "StrInput",
+                "advanced": false,
+                "display_name": "File Name",
+                "dynamic": false,
+                "info": "Name file will be saved as (without extension).",
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "file_name",
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": "news-aggregated"
+              },
+              "input": {
+                "_input_type": "HandleInput",
+                "advanced": false,
+                "display_name": "Input",
+                "dynamic": true,
+                "info": "The input to save.",
+                "input_types": [
+                  "Data",
+                  "DataFrame",
+                  "Message"
+                ],
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "input",
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "trace_as_metadata": true,
+                "type": "other",
+                "value": ""
+              }
+            },
+            "tool_mode": false
+          },
+          "showNode": true,
+          "type": "SaveToFile"
+        },
+        "dragging": false,
+        "id": "SaveToFile-VVVVb",
+        "measured": {
+          "height": 415,
+          "width": 320
+        },
+        "position": {
+          "x": 1794.2632899160462,
+          "y": 380.70482755018264
+        },
+        "selected": true,
+        "type": "genericNode"
       }
     ],
     "viewport": {
-      "x": 113.63345948765732,
-      "y": 252.40508015514627,
-      "zoom": 0.5137207349611489
+      "x": -27.058787075981854,
+      "y": 101.24533456841135,
+      "zoom": 0.7295800981010054
     }
   },
   "description": "Extracts data and information from webpages.",
   "endpoint_name": null,
-  "id": "d333c92f-5fe1-4791-9095-82441b0a9cb9",
+  "id": "10090ba4-02d7-4c07-bc44-c635c4d4e7d3",
   "is_component": false,
-  "last_tested_version": "1.4.3",
+  "last_tested_version": "1.6.0",
   "name": "News Aggregator",
   "tags": [
     "web-scraping",

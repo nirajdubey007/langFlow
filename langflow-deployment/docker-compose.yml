@@ -61,7 +61,7 @@ services:
       - "5432:5432"
     volumes:
       - langflow-postgres:/var/lib/postgresql/data
-      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../docker/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U langflow -d langflow"]
       interval: 10s

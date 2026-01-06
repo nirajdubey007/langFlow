@@ -105,7 +105,19 @@
             "icon": "type",
             "legacy": false,
             "lf_version": "1.5.0.post1",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "efdcba3771af",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 1
+              },
+              "module": "custom_components.text_input"
+            },
             "minimized": false,
             "output_types": [],
             "outputs": [
@@ -219,7 +231,27 @@
             "icon": "MessagesSquare",
             "legacy": false,
             "lf_version": "1.5.0.post1",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "1f36a5fbc6bd",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "orjson",
+                    "version": "3.10.15"
+                  },
+                  {
+                    "name": "fastapi",
+                    "version": "0.123.0"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 3
+              },
+              "module": "custom_components.chat_output"
+            },
             "minimized": true,
             "output_types": [],
             "outputs": [
@@ -437,7 +469,47 @@
             "icon": "download",
             "last_updated": "2025-08-26T16:19:16.681Z",
             "legacy": false,
-            "metadata": {},
+            "metadata": {
+              "code_hash": "65e2d3e2d65f",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "cryptography",
+                    "version": "43.0.3"
+                  },
+                  {
+                    "name": "langchain_chroma",
+                    "version": "0.2.6"
+                  },
+                  {
+                    "name": "loguru",
+                    "version": "0.7.3"
+                  },
+                  {
+                    "name": "pydantic",
+                    "version": "2.11.10"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  },
+                  {
+                    "name": "langchain_openai",
+                    "version": "0.3.23"
+                  },
+                  {
+                    "name": "langchain_huggingface",
+                    "version": "0.3.1"
+                  },
+                  {
+                    "name": "langchain_cohere",
+                    "version": "0.3.5"
+                  }
+                ],
+                "total_dependencies": 8
+              },
+              "module": "custom_components.knowledge_retrieval"
+            },
             "minimized": false,
             "output_types": [],
             "outputs": [

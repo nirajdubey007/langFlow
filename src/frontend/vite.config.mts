@@ -41,43 +41,19 @@ export default defineConfig(({ mode }) => {
     base: BASENAME || "",
     build: {
       outDir: "build",
-      sourcemap: false,
-      rollupOptions: {
-        output: {
-          manualChunks: undefined,
-        },
-        onwarn(warning, warn) {
-          // Ignore source map warnings from node_modules
-          if (warning.code === 'SOURCEMAP_ERROR' || warning.message?.includes('source map')) {
-            return;
-          }
-          warn(warning);
-        },
-      },
-    },
-    optimizeDeps: {
-      esbuildOptions: {
-        // Ignore source map errors during optimization
-        legalComments: 'none',
-      },
-    },
-    resolve: {
-      alias: {
-        "lucide-react/dynamicIconImports": "lucide-react/dist/esm/dynamicIconImports.js",
-      },
     },
     define: {
-      "process.env.BACKEND_URL": JSON.stringify(
+      "import.meta.env.BACKEND_URL": JSON.stringify(
         envLangflow.BACKEND_URL ?? "http://localhost:7860",
       ),
-      "process.env.ACCESS_TOKEN_EXPIRE_SECONDS": JSON.stringify(
+      "import.meta.env.ACCESS_TOKEN_EXPIRE_SECONDS": JSON.stringify(
         envLangflow.ACCESS_TOKEN_EXPIRE_SECONDS ?? 60,
       ),
-      "process.env.CI": JSON.stringify(envLangflow.CI ?? false),
-      "process.env.LANGFLOW_AUTO_LOGIN": JSON.stringify(
+      "import.meta.env.CI": JSON.stringify(envLangflow.CI ?? false),
+      "import.meta.env.LANGFLOW_AUTO_LOGIN": JSON.stringify(
         envLangflow.LANGFLOW_AUTO_LOGIN ?? true,
       ),
-      "process.env.LANGFLOW_MCP_COMPOSER_ENABLED": JSON.stringify(
+      "import.meta.env.LANGFLOW_MCP_COMPOSER_ENABLED": JSON.stringify(
         envLangflow.LANGFLOW_MCP_COMPOSER_ENABLED ?? "true",
       ),
     },

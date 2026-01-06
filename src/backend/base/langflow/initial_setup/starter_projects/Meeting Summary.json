@@ -313,7 +313,23 @@
             "icon": "AssemblyAI",
             "legacy": false,
             "lf_version": "1.1.5",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "3e67a5940263",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "assemblyai",
+                    "version": "0.35.1"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 2
+              },
+              "module": "custom_components.assemblyai_poll_transcript"
+            },
             "minimized": false,
             "output_types": [],
             "outputs": [
@@ -622,7 +638,27 @@
             "key": "ChatOutput",
             "legacy": false,
             "lf_version": "1.1.5",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "1f36a5fbc6bd",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "orjson",
+                    "version": "3.10.15"
+                  },
+                  {
+                    "name": "fastapi",
+                    "version": "0.123.0"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 3
+              },
+              "module": "custom_components.chat_output"
+            },
             "minimized": true,
             "output_types": [],
             "outputs": [
@@ -840,7 +876,27 @@
             "key": "ChatOutput",
             "legacy": false,
             "lf_version": "1.1.1",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "1f36a5fbc6bd",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "orjson",
+                    "version": "3.10.15"
+                  },
+                  {
+                    "name": "fastapi",
+                    "version": "0.123.0"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 3
+              },
+              "module": "custom_components.chat_output"
+            },
             "minimized": true,
             "output_types": [],
             "outputs": [
@@ -1058,7 +1114,27 @@
             "key": "ChatOutput",
             "legacy": false,
             "lf_version": "1.1.5",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "1f36a5fbc6bd",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "orjson",
+                    "version": "3.10.15"
+                  },
+                  {
+                    "name": "fastapi",
+                    "version": "0.123.0"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 3
+              },
+              "module": "custom_components.chat_output"
+            },
             "minimized": true,
             "output_types": [],
             "outputs": [
@@ -1453,7 +1529,19 @@
             "icon": "message-square-more",
             "legacy": false,
             "lf_version": "1.1.5",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "2d955c386a94",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 1
+              },
+              "module": "custom_components.message_history"
+            },
             "minimized": false,
             "output_types": [],
             "outputs": [
@@ -1780,7 +1868,19 @@
             "icon": "MessagesSquare",
             "legacy": false,
             "lf_version": "1.1.5",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "88cc3fef8f84",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 1
+              },
+              "module": "custom_components.chat_input"
+            },
             "minimized": true,
             "output_types": [],
             "outputs": [
@@ -2129,7 +2229,23 @@
             "icon": "AssemblyAI",
             "key": "AssemblyAITranscriptionJobCreator",
             "legacy": false,
-            "metadata": {},
+            "metadata": {
+              "code_hash": "03d20eaf49f4",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "assemblyai",
+                    "version": "0.35.1"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 2
+              },
+              "module": "custom_components.assemblyai_start_transcript"
+            },
             "minimized": false,
             "output_types": [],
             "outputs": [
@@ -2665,7 +2781,7 @@
             "category": "models",
             "conditional_paths": [],
             "custom_fields": {},
-            "description": "Runs a language model given a specified provider. ",
+            "description": "Runs a language model given a specified provider.",
             "display_name": "Language Model",
             "documentation": "",
             "edited": false,
@@ -2683,12 +2799,35 @@
             "key": "LanguageModelComponent",
             "legacy": false,
             "metadata": {
+              "code_hash": "bb5f8714781b",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langchain_anthropic",
+                    "version": "0.3.14"
+                  },
+                  {
+                    "name": "langchain_google_genai",
+                    "version": "2.0.6"
+                  },
+                  {
+                    "name": "langchain_openai",
+                    "version": "0.3.23"
+                  },
+                  {
+                    "name": "lfx",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 4
+              },
               "keywords": [
                 "model",
                 "llm",
                 "language model",
                 "large language model"
-              ]
+              ],
+              "module": "lfx.components.models.language_model.LanguageModelComponent"
             },
             "minimized": false,
             "output_types": [],
@@ -2805,11 +2944,20 @@
                   "gpt-4.1",
                   "gpt-4.1-mini",
                   "gpt-4.1-nano",
-                  "gpt-4.5-preview",
                   "gpt-4-turbo",
                   "gpt-4-turbo-preview",
                   "gpt-4",
-                  "gpt-3.5-turbo"
+                  "gpt-3.5-turbo",
+                  "gpt-5",
+                  "gpt-5-mini",
+                  "gpt-5-nano",
+                  "gpt-5-chat-latest",
+                  "o1",
+                  "o3-mini",
+                  "o3",
+                  "o3-pro",
+                  "o4-mini",
+                  "o4-mini-high"
                 ],
                 "options_metadata": [],
                 "placeholder": "",
@@ -2820,7 +2968,7 @@
                 "tool_mode": false,
                 "trace_as_metadata": true,
                 "type": "str",
-                "value": "gpt-4.1"
+                "value": "gpt-4o-mini"
               },
               "provider": {
                 "_input_type": "DropdownInput",
@@ -2960,7 +3108,7 @@
             "category": "models",
             "conditional_paths": [],
             "custom_fields": {},
-            "description": "Runs a language model given a specified provider. ",
+            "description": "Runs a language model given a specified provider.",
             "display_name": "Language Model",
             "documentation": "",
             "edited": false,
@@ -2978,12 +3126,35 @@
             "key": "LanguageModelComponent",
             "legacy": false,
             "metadata": {
+              "code_hash": "bb5f8714781b",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langchain_anthropic",
+                    "version": "0.3.14"
+                  },
+                  {
+                    "name": "langchain_google_genai",
+                    "version": "2.0.6"
+                  },
+                  {
+                    "name": "langchain_openai",
+                    "version": "0.3.23"
+                  },
+                  {
+                    "name": "lfx",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 4
+              },
               "keywords": [
                 "model",
                 "llm",
                 "language model",
                 "large language model"
-              ]
+              ],
+              "module": "lfx.components.models.language_model.LanguageModelComponent"
             },
             "minimized": false,
             "output_types": [],
@@ -3100,11 +3271,20 @@
                   "gpt-4.1",
                   "gpt-4.1-mini",
                   "gpt-4.1-nano",
-                  "gpt-4.5-preview",
                   "gpt-4-turbo",
                   "gpt-4-turbo-preview",
                   "gpt-4",
-                  "gpt-3.5-turbo"
+                  "gpt-3.5-turbo",
+                  "gpt-5",
+                  "gpt-5-mini",
+                  "gpt-5-nano",
+                  "gpt-5-chat-latest",
+                  "o1",
+                  "o3-mini",
+                  "o3",
+                  "o3-pro",
+                  "o4-mini",
+                  "o4-mini-high"
                 ],
                 "options_metadata": [],
                 "placeholder": "",
@@ -3115,7 +3295,7 @@
                 "tool_mode": false,
                 "trace_as_metadata": true,
                 "type": "str",
-                "value": "gpt-4.1"
+                "value": "gpt-4o-mini"
               },
               "provider": {
                 "_input_type": "DropdownInput",

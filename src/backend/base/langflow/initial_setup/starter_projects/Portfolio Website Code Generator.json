@@ -6,91 +6,8 @@
         "className": "",
         "data": {
           "sourceHandle": {
-            "dataType": "StructuredOutput",
-            "id": "StructuredOutput-rwiX4",
-            "name": "structured_output",
-            "output_types": [
-              "Data"
-            ]
-          },
-          "targetHandle": {
-            "fieldName": "input_data",
-            "id": "parser-tptWK",
-            "inputTypes": [
-              "DataFrame",
-              "Data"
-            ],
-            "type": "other"
-          }
-        },
-        "id": "reactflow__edge-StructuredOutput-rwiX4{œdataTypeœ:œStructuredOutputœ,œidœ:œStructuredOutput-rwiX4œ,œnameœ:œstructured_outputœ,œoutput_typesœ:[œDataœ]}-parser-tptWK{œfieldNameœ:œinput_dataœ,œidœ:œparser-tptWKœ,œinputTypesœ:[œDataFrameœ,œDataœ],œtypeœ:œotherœ}",
-        "selected": false,
-        "source": "StructuredOutput-rwiX4",
-        "sourceHandle": "{œdataTypeœ: œStructuredOutputœ, œidœ: œStructuredOutput-rwiX4œ, œnameœ: œstructured_outputœ, œoutput_typesœ: [œDataœ]}",
-        "target": "parser-tptWK",
-        "targetHandle": "{œfieldNameœ: œinput_dataœ, œidœ: œparser-tptWKœ, œinputTypesœ: [œDataFrameœ, œDataœ], œtypeœ: œotherœ}"
-      },
-      {
-        "animated": false,
-        "className": "",
-        "data": {
-          "sourceHandle": {
-            "dataType": "File",
-            "id": "File-dfMwA",
-            "name": "message",
-            "output_types": [
-              "Message"
-            ]
-          },
-          "targetHandle": {
-            "fieldName": "input_value",
-            "id": "StructuredOutput-rwiX4",
-            "inputTypes": [
-              "Message"
-            ],
-            "type": "str"
-          }
-        },
-        "id": "reactflow__edge-File-dfMwA{œdataTypeœ:œFileœ,œidœ:œFile-dfMwAœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-StructuredOutput-rwiX4{œfieldNameœ:œinput_valueœ,œidœ:œStructuredOutput-rwiX4œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
-        "selected": false,
-        "source": "File-dfMwA",
-        "sourceHandle": "{œdataTypeœ: œFileœ, œidœ: œFile-dfMwAœ, œnameœ: œmessageœ, œoutput_typesœ: [œMessageœ]}",
-        "target": "StructuredOutput-rwiX4",
-        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œStructuredOutput-rwiX4œ, œinputTypesœ: [œMessageœ], œtypeœ: œstrœ}"
-      },
-      {
-        "animated": false,
-        "data": {
-          "sourceHandle": {
-            "dataType": "LanguageModelComponent",
-            "id": "LanguageModelComponent-HrqxT",
-            "name": "model_output",
-            "output_types": [
-              "LanguageModel"
-            ]
-          },
-          "targetHandle": {
-            "fieldName": "llm",
-            "id": "StructuredOutput-rwiX4",
-            "inputTypes": [
-              "LanguageModel"
-            ],
-            "type": "other"
-          }
-        },
-        "id": "xy-edge__LanguageModelComponent-HrqxT{œdataTypeœ:œLanguageModelComponentœ,œidœ:œLanguageModelComponent-HrqxTœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-StructuredOutput-rwiX4{œfieldNameœ:œllmœ,œidœ:œStructuredOutput-rwiX4œ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œotherœ}",
-        "selected": false,
-        "source": "LanguageModelComponent-HrqxT",
-        "sourceHandle": "{œdataTypeœ: œLanguageModelComponentœ, œidœ: œLanguageModelComponent-HrqxTœ, œnameœ: œmodel_outputœ, œoutput_typesœ: [œLanguageModelœ]}",
-        "target": "StructuredOutput-rwiX4",
-        "targetHandle": "{œfieldNameœ: œllmœ, œidœ: œStructuredOutput-rwiX4œ, œinputTypesœ: [œLanguageModelœ], œtypeœ: œotherœ}"
-      },
-      {
-        "animated": false,
-        "data": {
-          "sourceHandle": {
             "dataType": "parser",
-            "id": "parser-tptWK",
+            "id": "parser-6caGE",
             "name": "parsed_text",
             "output_types": [
               "Message"
@@ -98,26 +15,27 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "LanguageModelComponent-QdlJs",
+            "id": "LanguageModelComponent-DJzkZ",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__parser-tptWK{œdataTypeœ:œparserœ,œidœ:œparser-tptWKœ,œnameœ:œparsed_textœ,œoutput_typesœ:[œMessageœ]}-LanguageModelComponent-QdlJs{œfieldNameœ:œinput_valueœ,œidœ:œLanguageModelComponent-QdlJsœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-parser-6caGE{œdataTypeœ:œparserœ,œidœ:œparser-6caGEœ,œnameœ:œparsed_textœ,œoutput_typesœ:[œMessageœ]}-LanguageModelComponent-DJzkZ{œfieldNameœ:œinput_valueœ,œidœ:œLanguageModelComponent-DJzkZœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "parser-tptWK",
-        "sourceHandle": "{œdataTypeœ: œparserœ, œidœ: œparser-tptWKœ, œnameœ: œparsed_textœ, œoutput_typesœ: [œMessageœ]}",
-        "target": "LanguageModelComponent-QdlJs",
-        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œLanguageModelComponent-QdlJsœ, œinputTypesœ: [œMessageœ], œtypeœ: œstrœ}"
+        "source": "parser-6caGE",
+        "sourceHandle": "{œdataTypeœ: œparserœ, œidœ: œparser-6caGEœ, œnameœ: œparsed_textœ, œoutput_typesœ: [œMessageœ]}",
+        "target": "LanguageModelComponent-DJzkZ",
+        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œLanguageModelComponent-DJzkZœ, œinputTypesœ: [œMessageœ], œtypeœ: œstrœ}"
       },
       {
         "animated": false,
+        "className": "",
         "data": {
           "sourceHandle": {
             "dataType": "TextInput",
-            "id": "TextInput-zN7nF",
+            "id": "TextInput-fQKUN",
             "name": "text",
             "output_types": [
               "Message"
@@ -125,25 +43,27 @@
           },
           "targetHandle": {
             "fieldName": "system_message",
-            "id": "LanguageModelComponent-QdlJs",
+            "id": "LanguageModelComponent-DJzkZ",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__TextInput-zN7nF{œdataTypeœ:œTextInputœ,œidœ:œTextInput-zN7nFœ,œnameœ:œtextœ,œoutput_typesœ:[œMessageœ]}-LanguageModelComponent-QdlJs{œfieldNameœ:œsystem_messageœ,œidœ:œLanguageModelComponent-QdlJsœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-TextInput-fQKUN{œdataTypeœ:œTextInputœ,œidœ:œTextInput-fQKUNœ,œnameœ:œtextœ,œoutput_typesœ:[œMessageœ]}-LanguageModelComponent-DJzkZ{œfieldNameœ:œsystem_messageœ,œidœ:œLanguageModelComponent-DJzkZœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "TextInput-zN7nF",
-        "sourceHandle": "{œdataTypeœ: œTextInputœ, œidœ: œTextInput-zN7nFœ, œnameœ: œtextœ, œoutput_typesœ: [œMessageœ]}",
-        "target": "LanguageModelComponent-QdlJs",
-        "targetHandle": "{œfieldNameœ: œsystem_messageœ, œidœ: œLanguageModelComponent-QdlJsœ, œinputTypesœ: [œMessageœ], œtypeœ: œstrœ}"
+        "source": "TextInput-fQKUN",
+        "sourceHandle": "{œdataTypeœ: œTextInputœ, œidœ: œTextInput-fQKUNœ, œnameœ: œtextœ, œoutput_typesœ: [œMessageœ]}",
+        "target": "LanguageModelComponent-DJzkZ",
+        "targetHandle": "{œfieldNameœ: œsystem_messageœ, œidœ: œLanguageModelComponent-DJzkZœ, œinputTypesœ: [œMessageœ], œtypeœ: œstrœ}"
       },
       {
+        "animated": false,
+        "className": "",
         "data": {
           "sourceHandle": {
             "dataType": "LanguageModelComponent",
-            "id": "LanguageModelComponent-QdlJs",
+            "id": "LanguageModelComponent-DJzkZ",
             "name": "text_output",
             "output_types": [
               "Message"
@@ -151,7 +71,7 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "ChatOutput-X6ReB",
+            "id": "ChatOutput-q991L",
             "inputTypes": [
               "Data",
               "DataFrame",
@@ -160,17 +80,103 @@
             "type": "str"
           }
         },
-        "id": "xy-edge__LanguageModelComponent-QdlJs{œdataTypeœ:œLanguageModelComponentœ,œidœ:œLanguageModelComponent-QdlJsœ,œnameœ:œtext_outputœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-X6ReB{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-X6ReBœ,œinputTypesœ:[œDataœ,œDataFrameœ,œMessageœ],œtypeœ:œstrœ}",
-        "source": "LanguageModelComponent-QdlJs",
-        "sourceHandle": "{œdataTypeœ: œLanguageModelComponentœ, œidœ: œLanguageModelComponent-QdlJsœ, œnameœ: œtext_outputœ, œoutput_typesœ: [œMessageœ]}",
-        "target": "ChatOutput-X6ReB",
-        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œChatOutput-X6ReBœ, œinputTypesœ: [œDataœ, œDataFrameœ, œMessageœ], œtypeœ: œstrœ}"
+        "id": "reactflow__edge-LanguageModelComponent-DJzkZ{œdataTypeœ:œLanguageModelComponentœ,œidœ:œLanguageModelComponent-DJzkZœ,œnameœ:œtext_outputœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-q991L{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-q991Lœ,œinputTypesœ:[œDataœ,œDataFrameœ,œMessageœ],œtypeœ:œstrœ}",
+        "selected": false,
+        "source": "LanguageModelComponent-DJzkZ",
+        "sourceHandle": "{œdataTypeœ: œLanguageModelComponentœ, œidœ: œLanguageModelComponent-DJzkZœ, œnameœ: œtext_outputœ, œoutput_typesœ: [œMessageœ]}",
+        "target": "ChatOutput-q991L",
+        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œChatOutput-q991Lœ, œinputTypesœ: [œDataœ, œDataFrameœ, œMessageœ], œtypeœ: œstrœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "LanguageModelComponent",
+            "id": "LanguageModelComponent-2ZwfQ",
+            "name": "model_output",
+            "output_types": [
+              "LanguageModel"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "llm",
+            "id": "StructuredOutput-wsAT3",
+            "inputTypes": [
+              "LanguageModel"
+            ],
+            "type": "other"
+          }
+        },
+        "id": "xy-edge__LanguageModelComponent-2ZwfQ{œdataTypeœ:œLanguageModelComponentœ,œidœ:œLanguageModelComponent-2ZwfQœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-StructuredOutput-wsAT3{œfieldNameœ:œllmœ,œidœ:œStructuredOutput-wsAT3œ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œotherœ}",
+        "selected": false,
+        "source": "LanguageModelComponent-2ZwfQ",
+        "sourceHandle": "{œdataTypeœ: œLanguageModelComponentœ, œidœ: œLanguageModelComponent-2ZwfQœ, œnameœ: œmodel_outputœ, œoutput_typesœ: [œLanguageModelœ]}",
+        "target": "StructuredOutput-wsAT3",
+        "targetHandle": "{œfieldNameœ: œllmœ, œidœ: œStructuredOutput-wsAT3œ, œinputTypesœ: [œLanguageModelœ], œtypeœ: œotherœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "File",
+            "id": "File-gVVqw",
+            "name": "message",
+            "output_types": [
+              "Message"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "input_value",
+            "id": "StructuredOutput-wsAT3",
+            "inputTypes": [
+              "Message"
+            ],
+            "type": "str"
+          }
+        },
+        "id": "xy-edge__File-gVVqw{œdataTypeœ:œFileœ,œidœ:œFile-gVVqwœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-StructuredOutput-wsAT3{œfieldNameœ:œinput_valueœ,œidœ:œStructuredOutput-wsAT3œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "selected": false,
+        "source": "File-gVVqw",
+        "sourceHandle": "{œdataTypeœ: œFileœ, œidœ: œFile-gVVqwœ, œnameœ: œmessageœ, œoutput_typesœ: [œMessageœ]}",
+        "target": "StructuredOutput-wsAT3",
+        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œStructuredOutput-wsAT3œ, œinputTypesœ: [œMessageœ], œtypeœ: œstrœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "StructuredOutput",
+            "id": "StructuredOutput-wsAT3",
+            "name": "dataframe_output",
+            "output_types": [
+              "DataFrame"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "input_data",
+            "id": "parser-6caGE",
+            "inputTypes": [
+              "DataFrame",
+              "Data"
+            ],
+            "type": "other"
+          }
+        },
+        "id": "xy-edge__StructuredOutput-wsAT3{œdataTypeœ:œStructuredOutputœ,œidœ:œStructuredOutput-wsAT3œ,œnameœ:œdataframe_outputœ,œoutput_typesœ:[œDataFrameœ]}-parser-6caGE{œfieldNameœ:œinput_dataœ,œidœ:œparser-6caGEœ,œinputTypesœ:[œDataFrameœ,œDataœ],œtypeœ:œotherœ}",
+        "selected": false,
+        "source": "StructuredOutput-wsAT3",
+        "sourceHandle": "{œdataTypeœ: œStructuredOutputœ, œidœ: œStructuredOutput-wsAT3œ, œnameœ: œdataframe_outputœ, œoutput_typesœ: [œDataFrameœ]}",
+        "target": "parser-6caGE",
+        "targetHandle": "{œfieldNameœ: œinput_dataœ, œidœ: œparser-6caGEœ, œinputTypesœ: [œDataFrameœ, œDataœ], œtypeœ: œotherœ}"
       }
     ],
     "nodes": [
       {
         "data": {
-          "id": "TextInput-zN7nF",
+          "id": "TextInput-fQKUN",
           "node": {
             "base_classes": [
               "Message"
@@ -190,8 +196,20 @@
             "icon": "type",
             "key": "TextInput",
             "legacy": false,
-            "lf_version": "1.2.0",
-            "metadata": {},
+            "lf_version": "1.6.0",
+            "metadata": {
+              "code_hash": "efdcba3771af",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 1
+              },
+              "module": "custom_components.text_input"
+            },
             "minimized": false,
             "output_types": [],
             "outputs": [
@@ -264,7 +282,7 @@
           "type": "TextInput"
         },
         "dragging": false,
-        "id": "TextInput-zN7nF",
+        "id": "TextInput-fQKUN",
         "measured": {
           "height": 204,
           "width": 320
@@ -278,7 +296,7 @@
       },
       {
         "data": {
-          "id": "ChatOutput-X6ReB",
+          "id": "ChatOutput-q991L",
           "node": {
             "base_classes": [
               "Message"
@@ -306,8 +324,28 @@
             "icon": "MessagesSquare",
             "key": "ChatOutput",
             "legacy": false,
-            "lf_version": "1.2.0",
-            "metadata": {},
+            "lf_version": "1.6.0",
+            "metadata": {
+              "code_hash": "1f36a5fbc6bd",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "orjson",
+                    "version": "3.10.15"
+                  },
+                  {
+                    "name": "fastapi",
+                    "version": "0.123.0"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 3
+              },
+              "module": "custom_components.chat_output"
+            },
             "minimized": true,
             "output_types": [],
             "outputs": [
@@ -490,7 +528,7 @@
           "type": "ChatOutput"
         },
         "dragging": false,
-        "id": "ChatOutput-X6ReB",
+        "id": "ChatOutput-q991L",
         "measured": {
           "height": 48,
           "width": 192
@@ -504,7 +542,7 @@
       },
       {
         "data": {
-          "id": "note-acs4U",
+          "id": "note-N5ILW",
           "node": {
             "description": "### 💡 Upload your resume here",
             "display_name": "",
@@ -517,7 +555,7 @@
         },
         "dragging": false,
         "height": 358,
-        "id": "note-acs4U",
+        "id": "note-N5ILW",
         "measured": {
           "height": 358,
           "width": 346
@@ -533,7 +571,7 @@
       },
       {
         "data": {
-          "id": "note-WJEOM",
+          "id": "note-bCQJm",
           "node": {
             "description": "## 📝 Portfolio Website Code Generator\n\nYour uploaded resume is parsed into a structured format, and output as HTML/CSS code for your own resume website!\n\n✅ **Accepted Formats:** PDF or TXT  \n✅ To ensure readability, provide clear headings, bullet points, and proper formatting. \n### 📌 Structured output fields:\n1. 🏷 **Full Name** - Candidate's full name  \n2. 📧 **Email** - A valid email address  \n3. 📞 **Phone Number** - Contact number  \n4. 🔗 **LinkedIn** - LinkedIn profile URL  \n5. 🖥 **GitHub** - GitHub profile URL (if applicable)  \n6. 🌐 **Portfolio** - Personal website or portfolio URL  \n7. 🛂 **Visa Status** - Work authorization details (if applicable)  \n8. 📝 **Summary** - A brief professional summary or objective statement  \n9. 💼 **Experience** - Work experience details (in dictionary format)  \n10. 🎓 **Education** - Education details (in dictionary format)  \n11. 🛠 **Skills** - Skills mentioned in the resume (comma-separated)  \n12. 🚀 **Projects** - Titles, descriptions, and details of projects.",
             "display_name": "",
@@ -544,7 +582,7 @@
         },
         "dragging": false,
         "height": 621,
-        "id": "note-WJEOM",
+        "id": "note-bCQJm",
         "measured": {
           "height": 621,
           "width": 478
@@ -560,7 +598,7 @@
       },
       {
         "data": {
-          "id": "note-SNz2K",
+          "id": "note-wJ9Jw",
           "node": {
             "description": "### 💡 Click **Open table** to view the schema",
             "display_name": "",
@@ -573,7 +611,7 @@
         },
         "dragging": false,
         "height": 438,
-        "id": "note-SNz2K",
+        "id": "note-wJ9Jw",
         "measured": {
           "height": 438,
           "width": 359
@@ -589,9 +627,9 @@
       },
       {
         "data": {
-          "id": "note-wY2lq",
+          "id": "note-1mSYT",
           "node": {
-            "description": "### 💡 Add your Anthropic API key here",
+            "description": "### 💡 Add your OpenAI API key here",
             "display_name": "",
             "documentation": "",
             "template": {
@@ -602,14 +640,14 @@
         },
         "dragging": false,
         "height": 324,
-        "id": "note-wY2lq",
+        "id": "note-1mSYT",
         "measured": {
           "height": 324,
           "width": 362
         },
         "position": {
           "x": 924.6299565901533,
-          "y": 1.8200755150596493
+          "y": 25.185126267136795
         },
         "resizing": false,
         "selected": false,
@@ -618,7 +656,7 @@
       },
       {
         "data": {
-          "id": "note-uh1Dy",
+          "id": "note-tzsYo",
           "node": {
             "description": "### 💡 Add your Anthropic API key here",
             "display_name": "",
@@ -631,7 +669,7 @@
         },
         "dragging": false,
         "height": 324,
-        "id": "note-uh1Dy",
+        "id": "note-tzsYo",
         "measured": {
           "height": 324,
           "width": 344
@@ -647,358 +685,7 @@
       },
       {
         "data": {
-          "id": "StructuredOutput-rwiX4",
-          "node": {
-            "base_classes": [
-              "Data",
-              "DataFrame"
-            ],
-            "beta": false,
-            "conditional_paths": [],
-            "custom_fields": {},
-            "description": "Uses an LLM to generate structured data. Ideal for extraction and consistency.",
-            "display_name": "Structured Output",
-            "documentation": "",
-            "edited": false,
-            "field_order": [
-              "llm",
-              "input_value",
-              "system_prompt",
-              "schema_name",
-              "output_schema",
-              "multiple"
-            ],
-            "frozen": false,
-            "icon": "braces",
-            "legacy": false,
-            "lf_version": "1.2.0",
-            "metadata": {},
-            "minimized": false,
-            "output_types": [],
-            "outputs": [
-              {
-                "allows_loop": false,
-                "cache": true,
-                "display_name": "Structured Output",
-                "group_outputs": false,
-                "method": "build_structured_output",
-                "name": "structured_output",
-                "selected": "Data",
-                "tool_mode": true,
-                "types": [
-                  "Data"
-                ],
-                "value": "__UNDEFINED__"
-              },
-              {
-                "allows_loop": false,
-                "cache": true,
-                "display_name": "Structured Output",
-                "group_outputs": false,
-                "method": "build_structured_dataframe",
-                "name": "dataframe_output",
-                "selected": "DataFrame",
-                "tool_mode": true,
-                "types": [
-                  "DataFrame"
-                ],
-                "value": "__UNDEFINED__"
-              }
-            ],
-            "pinned": false,
-            "template": {
-              "_type": "Component",
-              "code": {
-                "advanced": true,
-                "dynamic": true,
-                "fileTypes": [],
-                "file_path": "",
-                "info": "",
-                "list": false,
-                "load_from_db": false,
-                "multiline": true,
-                "name": "code",
-                "password": false,
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "type": "code",
-                "value": "from pydantic import BaseModel, Field, create_model\nfrom trustcall import create_extractor\n\nfrom langflow.base.models.chat_result import get_chat_result\nfrom langflow.custom.custom_component.component import Component\nfrom langflow.helpers.base_model import build_model_from_schema\nfrom langflow.io import (\n    HandleInput,\n    MessageTextInput,\n    MultilineInput,\n    Output,\n    TableInput,\n)\nfrom langflow.schema.data import Data\nfrom langflow.schema.dataframe import DataFrame\nfrom langflow.schema.table import EditMode\n\n\nclass StructuredOutputComponent(Component):\n    display_name = \"Structured Output\"\n    description = \"Uses an LLM to generate structured data. Ideal for extraction and consistency.\"\n    documentation: str = \"https://docs.langflow.org/components-processing#structured-output\"\n    name = \"StructuredOutput\"\n    icon = \"braces\"\n\n    inputs = [\n        HandleInput(\n            name=\"llm\",\n            display_name=\"Language Model\",\n            info=\"The language model to use to generate the structured output.\",\n            input_types=[\"LanguageModel\"],\n            required=True,\n        ),\n        MultilineInput(\n            name=\"input_value\",\n            display_name=\"Input Message\",\n            info=\"The input message to the language model.\",\n            tool_mode=True,\n            required=True,\n        ),\n        MultilineInput(\n            name=\"system_prompt\",\n            display_name=\"Format Instructions\",\n            info=\"The instructions to the language model for formatting the output.\",\n            value=(\n                \"You are an AI that extracts structured JSON objects from unstructured text. \"\n                \"Use a predefined schema with expected types (str, int, float, bool, dict). \"\n                \"Extract ALL relevant instances that match the schema - if multiple patterns exist, capture them all. \"\n                \"Fill missing or ambiguous values with defaults: null for missing values. \"\n                \"Remove exact duplicates but keep variations that have different field values. \"\n                \"Always return valid JSON in the expected format, never throw errors. \"\n                \"If multiple objects can be extracted, return them all in the structured format.\"\n            ),\n            required=True,\n            advanced=True,\n        ),\n        MessageTextInput(\n            name=\"schema_name\",\n            display_name=\"Schema Name\",\n            info=\"Provide a name for the output data schema.\",\n            advanced=True,\n        ),\n        TableInput(\n            name=\"output_schema\",\n            display_name=\"Output Schema\",\n            info=\"Define the structure and data types for the model's output.\",\n            required=True,\n            # TODO: remove deault value\n            table_schema=[\n                {\n                    \"name\": \"name\",\n                    \"display_name\": \"Name\",\n                    \"type\": \"str\",\n                    \"description\": \"Specify the name of the output field.\",\n                    \"default\": \"field\",\n                    \"edit_mode\": EditMode.INLINE,\n                },\n                {\n                    \"name\": \"description\",\n                    \"display_name\": \"Description\",\n                    \"type\": \"str\",\n                    \"description\": \"Describe the purpose of the output field.\",\n                    \"default\": \"description of field\",\n                    \"edit_mode\": EditMode.POPOVER,\n                },\n                {\n                    \"name\": \"type\",\n                    \"display_name\": \"Type\",\n                    \"type\": \"str\",\n                    \"edit_mode\": EditMode.INLINE,\n                    \"description\": (\"Indicate the data type of the output field (e.g., str, int, float, bool, dict).\"),\n                    \"options\": [\"str\", \"int\", \"float\", \"bool\", \"dict\"],\n                    \"default\": \"str\",\n                },\n                {\n                    \"name\": \"multiple\",\n                    \"display_name\": \"As List\",\n                    \"type\": \"boolean\",\n                    \"description\": \"Set to True if this output field should be a list of the specified type.\",\n                    \"default\": \"False\",\n                    \"edit_mode\": EditMode.INLINE,\n                },\n            ],\n            value=[\n                {\n                    \"name\": \"field\",\n                    \"description\": \"description of field\",\n                    \"type\": \"str\",\n                    \"multiple\": \"False\",\n                }\n            ],\n        ),\n    ]\n\n    outputs = [\n        Output(\n            name=\"structured_output\",\n            display_name=\"Structured Output\",\n            method=\"build_structured_output\",\n        ),\n        Output(\n            name=\"dataframe_output\",\n            display_name=\"Structured Output\",\n            method=\"build_structured_dataframe\",\n        ),\n    ]\n\n    def build_structured_output_base(self):\n        schema_name = self.schema_name or \"OutputModel\"\n\n        if not hasattr(self.llm, \"with_structured_output\"):\n            msg = \"Language model does not support structured output.\"\n            raise TypeError(msg)\n        if not self.output_schema:\n            msg = \"Output schema cannot be empty\"\n            raise ValueError(msg)\n\n        output_model_ = build_model_from_schema(self.output_schema)\n\n        output_model = create_model(\n            schema_name,\n            __doc__=f\"A list of {schema_name}.\",\n            objects=(list[output_model_], Field(description=f\"A list of {schema_name}.\")),  # type: ignore[valid-type]\n        )\n\n        try:\n            llm_with_structured_output = create_extractor(self.llm, tools=[output_model])\n        except NotImplementedError as exc:\n            msg = f\"{self.llm.__class__.__name__} does not support structured output.\"\n            raise TypeError(msg) from exc\n\n        config_dict = {\n            \"run_name\": self.display_name,\n            \"project_name\": self.get_project_name(),\n            \"callbacks\": self.get_langchain_callbacks(),\n        }\n        result = get_chat_result(\n            runnable=llm_with_structured_output,\n            system_message=self.system_prompt,\n            input_value=self.input_value,\n            config=config_dict,\n        )\n\n        # OPTIMIZATION NOTE: Simplified processing based on trustcall response structure\n        # Handle non-dict responses (shouldn't happen with trustcall, but defensive)\n        if not isinstance(result, dict):\n            return result\n\n        # Extract first response and convert BaseModel to dict\n        responses = result.get(\"responses\", [])\n        if not responses:\n            return result\n\n        # Convert BaseModel to dict (creates the \"objects\" key)\n        first_response = responses[0]\n        structured_data = first_response.model_dump() if isinstance(first_response, BaseModel) else first_response\n\n        # Extract the objects array (guaranteed to exist due to our Pydantic model structure)\n        return structured_data.get(\"objects\", structured_data)\n\n    def build_structured_output(self) -> Data:\n        output = self.build_structured_output_base()\n        if not isinstance(output, list) or not output:\n            # handle empty or unexpected type case\n            msg = \"No structured output returned\"\n            raise ValueError(msg)\n        if len(output) == 1:\n            return Data(data=output[0])\n        if len(output) > 1:\n            # Multiple outputs - wrap them in a results container\n            return Data(data={\"results\": output})\n        return Data()\n\n    def build_structured_dataframe(self) -> DataFrame:\n        output = self.build_structured_output_base()\n        if not isinstance(output, list) or not output:\n            # handle empty or unexpected type case\n            msg = \"No structured output returned\"\n            raise ValueError(msg)\n        if len(output) == 1:\n            # For single dictionary, wrap in a list to create DataFrame with one row\n            return DataFrame([output[0]])\n        if len(output) > 1:\n            # Multiple outputs - convert to DataFrame directly\n            return DataFrame(output)\n        return DataFrame()\n"
-              },
-              "input_value": {
-                "_input_type": "MessageTextInput",
-                "advanced": false,
-                "display_name": "Input Message",
-                "dynamic": false,
-                "info": "The input message to the language model.",
-                "input_types": [
-                  "Message"
-                ],
-                "list": false,
-                "list_add_label": "Add More",
-                "load_from_db": false,
-                "name": "input_value",
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "tool_mode": true,
-                "trace_as_input": true,
-                "trace_as_metadata": true,
-                "type": "str",
-                "value": ""
-              },
-              "llm": {
-                "_input_type": "HandleInput",
-                "advanced": false,
-                "display_name": "Language Model",
-                "dynamic": false,
-                "info": "The language model to use to generate the structured output.",
-                "input_types": [
-                  "LanguageModel"
-                ],
-                "list": false,
-                "list_add_label": "Add More",
-                "name": "llm",
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "trace_as_metadata": true,
-                "type": "other",
-                "value": ""
-              },
-              "output_schema": {
-                "_input_type": "TableInput",
-                "advanced": false,
-                "display_name": "Output Schema",
-                "dynamic": false,
-                "info": "Define the structure and data types for the model's output.",
-                "is_list": true,
-                "list_add_label": "Add More",
-                "load_from_db": false,
-                "name": "output_schema",
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "table_icon": "Table",
-                "table_schema": {
-                  "columns": [
-                    {
-                      "default": "field",
-                      "description": "Specify the name of the output field.",
-                      "disable_edit": false,
-                      "display_name": "Name",
-                      "edit_mode": "inline",
-                      "filterable": true,
-                      "formatter": "text",
-                      "hidden": false,
-                      "name": "name",
-                      "sortable": true,
-                      "type": "str"
-                    },
-                    {
-                      "default": "description of field",
-                      "description": "Describe the purpose of the output field.",
-                      "disable_edit": false,
-                      "display_name": "Description",
-                      "edit_mode": "popover",
-                      "filterable": true,
-                      "formatter": "text",
-                      "hidden": false,
-                      "name": "description",
-                      "sortable": true,
-                      "type": "str"
-                    },
-                    {
-                      "default": "str",
-                      "description": "Indicate the data type of the output field (e.g., str, int, float, bool, list, dict).",
-                      "disable_edit": false,
-                      "display_name": "Type",
-                      "edit_mode": "inline",
-                      "filterable": true,
-                      "formatter": "text",
-                      "hidden": false,
-                      "name": "type",
-                      "options": [
-                        "str",
-                        "int",
-                        "float",
-                        "bool",
-                        "list",
-                        "dict"
-                      ],
-                      "sortable": true,
-                      "type": "str"
-                    },
-                    {
-                      "default": false,
-                      "description": "Set to True if this output field should be a list of the specified type.",
-                      "disable_edit": false,
-                      "display_name": "Multiple",
-                      "edit_mode": "inline",
-                      "filterable": true,
-                      "formatter": "boolean",
-                      "hidden": false,
-                      "name": "multiple",
-                      "sortable": true,
-                      "type": "boolean"
-                    }
-                  ]
-                },
-                "title_case": false,
-                "tool_mode": false,
-                "trace_as_metadata": true,
-                "trigger_icon": "Table",
-                "trigger_text": "Open table",
-                "type": "table",
-                "value": [
-                  {
-                    "description": "Full name of the candidate",
-                    "multiple": "False",
-                    "name": "full_name",
-                    "type": "text"
-                  },
-                  {
-                    "description": "Email ID",
-                    "multiple": "False",
-                    "name": "email",
-                    "type": "text"
-                  },
-                  {
-                    "description": "contact number",
-                    "multiple": "False",
-                    "name": "phone_number",
-                    "type": "text"
-                  },
-                  {
-                    "description": "LinkedIn URL",
-                    "multiple": "False",
-                    "name": "linkedin",
-                    "type": "text"
-                  },
-                  {
-                    "description": "GitHub profile URL (if applicable)",
-                    "multiple": "False",
-                    "name": "github",
-                    "type": "text"
-                  },
-                  {
-                    "description": "Personal website or portfolio URL",
-                    "multiple": "False",
-                    "name": "portfolio",
-                    "type": "text"
-                  },
-                  {
-                    "description": "Visa/work authorization details (if applicable)",
-                    "multiple": "False",
-                    "name": "visa_status",
-                    "type": "text"
-                  },
-                  {
-                    "description": "Short professional summary or objective statement",
-                    "multiple": "False",
-                    "name": "summary",
-                    "type": "text"
-                  },
-                  {
-                    "description": "dictionaries of experience details with following keys:\n    \"job_title\": Job position/title,\n\t\"company_name\": Employer or organization\n\t\"location\": Job location (remote/in-office)\n\t\"start_date\": Start date (YYYY-MM)\n\t\"end_date\": End date or \"Present\"\n\t\"responsibilities\": List of responsibilities and tasks\n\t\"achievements\": List of key achievements and contributions",
-                    "multiple": "True",
-                    "name": "experience",
-                    "type": "dict"
-                  },
-                  {
-                    "description": "dictionaries of Education details with following keys:\n\"degree\": Degree obtained (e.g., B.Sc., M.Sc., Ph.D.),\n\"field_of_study\": Major or specialization,\n\"institution\": University/college name,\n\"location\": Location of institution,\n\"start_date\": Start date (YYYY-MM),\n\"end_date\": Graduation/completion date (YYYY-MM),\n\"gpa\": GPA/grade (if available),\n\"relevant_courses\": List of relevant coursework (if applicable)",
-                    "multiple": "True",
-                    "name": "education",
-                    "type": "dict"
-                  },
-                  {
-                    "description": "skills mentioned in the resume.comma seperated.",
-                    "multiple": "False",
-                    "name": "skills",
-                    "type": "list"
-                  },
-                  {
-                    "description": "title and description and details of the project. Including the skills and technologies used.",
-                    "multiple": "False",
-                    "name": "projects",
-                    "type": "text"
-                  }
-                ]
-              },
-              "schema_name": {
-                "_input_type": "MessageTextInput",
-                "advanced": true,
-                "display_name": "Schema Name",
-                "dynamic": false,
-                "info": "Provide a name for the output data schema.",
-                "input_types": [
-                  "Message"
-                ],
-                "list": false,
-                "list_add_label": "Add More",
-                "load_from_db": false,
-                "name": "schema_name",
-                "placeholder": "",
-                "required": false,
-                "show": true,
-                "title_case": false,
-                "tool_mode": false,
-                "trace_as_input": true,
-                "trace_as_metadata": true,
-                "type": "str",
-                "value": ""
-              },
-              "system_prompt": {
-                "_input_type": "MultilineInput",
-                "advanced": true,
-                "copy_field": false,
-                "display_name": "Format Instructions",
-                "dynamic": false,
-                "info": "The instructions to the language model for formatting the output.",
-                "input_types": [
-                  "Message"
-                ],
-                "list": false,
-                "list_add_label": "Add More",
-                "load_from_db": false,
-                "multiline": true,
-                "name": "system_prompt",
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "tool_mode": false,
-                "trace_as_input": true,
-                "trace_as_metadata": true,
-                "type": "str",
-                "value": "You are an AI that extracts structured JSON objects from unstructured text. Use a predefined schema with expected types (str, int, float, bool, dict). Extract ALL relevant instances that match the schema - if multiple patterns exist, capture them all. Fill missing or ambiguous values with defaults: null for missing values. Remove exact duplicates but keep variations that have different field values. Always return valid JSON in the expected format, never throw errors. If multiple objects can be extracted, return them all in the structured format."
-              }
-            },
-            "tool_mode": false
-          },
-          "selected_output": "structured_output_dataframe",
-          "showNode": true,
-          "type": "StructuredOutput"
-        },
-        "dragging": false,
-        "id": "StructuredOutput-rwiX4",
-        "measured": {
-          "height": 349,
-          "width": 320
-        },
-        "position": {
-          "x": 1306.940204747624,
-          "y": 645.3388247558626
-        },
-        "selected": false,
-        "type": "genericNode"
-      },
-      {
-        "data": {
-          "id": "parser-tptWK",
+          "id": "parser-6caGE",
           "node": {
             "base_classes": [
               "Message"
@@ -1021,7 +708,7 @@
             "icon": "braces",
             "key": "parser",
             "legacy": false,
-            "lf_version": "1.2.0",
+            "lf_version": "1.6.0",
             "metadata": {},
             "minimized": false,
             "output_types": [],
@@ -1160,7 +847,7 @@
           "type": "parser"
         },
         "dragging": false,
-        "id": "parser-tptWK",
+        "id": "parser-6caGE",
         "measured": {
           "height": 278,
           "width": 320
@@ -1174,7 +861,7 @@
       },
       {
         "data": {
-          "id": "File-dfMwA",
+          "id": "File-gVVqw",
           "node": {
             "base_classes": [
               "Message"
@@ -1199,8 +886,22 @@
             ],
             "frozen": false,
             "icon": "file-text",
+            "last_updated": "2025-09-29T16:08:14.225Z",
             "legacy": false,
-            "metadata": {},
+            "lf_version": "1.6.0",
+            "metadata": {
+              "code_hash": "0deb837dc28d",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 1
+              },
+              "module": "custom_components.file"
+            },
             "minimized": false,
             "output_types": [],
             "outputs": [
@@ -1438,6 +1139,7 @@
                 "dialog_inputs": {},
                 "display_name": "OCR Engine",
                 "dynamic": false,
+                "external_options": {},
                 "info": "OCR engine to use. Only available when pipeline is set to 'standard'.",
                 "name": "ocr_engine",
                 "options": [
@@ -1453,7 +1155,7 @@
                 "tool_mode": false,
                 "trace_as_metadata": true,
                 "type": "str",
-                "value": ""
+                "value": "easyocr"
               },
               "path": {
                 "_input_type": "FileInput",
@@ -1527,6 +1229,7 @@
                 "dialog_inputs": {},
                 "display_name": "Pipeline",
                 "dynamic": false,
+                "external_options": {},
                 "info": "Docling pipeline to use",
                 "name": "pipeline",
                 "options": [
@@ -1535,8 +1238,9 @@
                 ],
                 "options_metadata": [],
                 "placeholder": "",
+                "real_time_refresh": true,
                 "required": false,
-                "show": true,
+                "show": false,
                 "title_case": false,
                 "toggle": false,
                 "tool_mode": false,
@@ -1602,13 +1306,14 @@
             },
             "tool_mode": false
           },
+          "selected_output": "message",
           "showNode": true,
           "type": "File"
         },
         "dragging": false,
-        "id": "File-dfMwA",
+        "id": "File-gVVqw",
         "measured": {
-          "height": 230,
+          "height": 214,
           "width": 320
         },
         "position": {
@@ -1620,7 +1325,7 @@
       },
       {
         "data": {
-          "id": "LanguageModelComponent-HrqxT",
+          "id": "LanguageModelComponent-2ZwfQ",
           "node": {
             "base_classes": [
               "LanguageModel",
@@ -1629,7 +1334,7 @@
             "beta": false,
             "conditional_paths": [],
             "custom_fields": {},
-            "description": "Runs a language model given a specified provider. ",
+            "description": "Runs a language model given a specified provider.",
             "display_name": "Language Model",
             "documentation": "",
             "edited": false,
@@ -1644,14 +1349,39 @@
             ],
             "frozen": false,
             "icon": "brain-circuit",
+            "last_updated": "2025-09-29T16:04:31.458Z",
             "legacy": false,
+            "lf_version": "1.6.0",
             "metadata": {
+              "code_hash": "bb5f8714781b",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langchain_anthropic",
+                    "version": "0.3.14"
+                  },
+                  {
+                    "name": "langchain_google_genai",
+                    "version": "2.0.6"
+                  },
+                  {
+                    "name": "langchain_openai",
+                    "version": "0.3.23"
+                  },
+                  {
+                    "name": "lfx",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 4
+              },
               "keywords": [
                 "model",
                 "llm",
                 "language model",
                 "large language model"
-              ]
+              ],
+              "module": "lfx.components.models.language_model.LanguageModelComponent"
             },
             "minimized": false,
             "output_types": [],
@@ -1665,6 +1395,7 @@
                 "name": "text_output",
                 "options": null,
                 "required_inputs": null,
+                "selected": "Message",
                 "tool_mode": true,
                 "types": [
                   "Message"
@@ -1695,7 +1426,7 @@
               "api_key": {
                 "_input_type": "SecretStrInput",
                 "advanced": false,
-                "display_name": "Anthropic API Key",
+                "display_name": "OpenAI API Key",
                 "dynamic": false,
                 "info": "Model Provider API key",
                 "input_types": [],
@@ -1708,7 +1439,7 @@
                 "show": true,
                 "title_case": false,
                 "type": "str",
-                "value": "ANTHROPIC_API_KEY"
+                "value": "OPENAI_API_KEY"
               },
               "code": {
                 "advanced": true,
@@ -1761,13 +1492,25 @@
                 "info": "Select the model to use",
                 "name": "model_name",
                 "options": [
-                  "claude-opus-4-20250514",
-                  "claude-sonnet-4-20250514",
-                  "claude-3-7-sonnet-latest",
-                  "claude-3-5-sonnet-latest",
-                  "claude-3-5-haiku-latest",
-                  "claude-3-opus-latest",
-                  "claude-3-sonnet-20240229"
+                  "gpt-4o-mini",
+                  "gpt-4o",
+                  "gpt-4.1",
+                  "gpt-4.1-mini",
+                  "gpt-4.1-nano",
+                  "gpt-4-turbo",
+                  "gpt-4-turbo-preview",
+                  "gpt-4",
+                  "gpt-3.5-turbo",
+                  "gpt-5",
+                  "gpt-5-mini",
+                  "gpt-5-nano",
+                  "gpt-5-chat-latest",
+                  "o1",
+                  "o3-mini",
+                  "o3",
+                  "o3-pro",
+                  "o4-mini",
+                  "o4-mini-high"
                 ],
                 "options_metadata": [],
                 "placeholder": "",
@@ -1778,7 +1521,7 @@
                 "tool_mode": false,
                 "trace_as_metadata": true,
                 "type": "str",
-                "value": "claude-3-5-sonnet-latest"
+                "value": "gpt-4o-mini"
               },
               "provider": {
                 "_input_type": "DropdownInput",
@@ -1814,7 +1557,7 @@
                 "tool_mode": false,
                 "trace_as_metadata": true,
                 "type": "str",
-                "value": "Anthropic"
+                "value": "OpenAI"
               },
               "stream": {
                 "_input_type": "BoolInput",
@@ -1895,7 +1638,7 @@
           "type": "LanguageModelComponent"
         },
         "dragging": false,
-        "id": "LanguageModelComponent-HrqxT",
+        "id": "LanguageModelComponent-2ZwfQ",
         "measured": {
           "height": 451,
           "width": 320
@@ -1909,7 +1652,7 @@
       },
       {
         "data": {
-          "id": "LanguageModelComponent-QdlJs",
+          "id": "LanguageModelComponent-DJzkZ",
           "node": {
             "base_classes": [
               "LanguageModel",
@@ -1918,7 +1661,7 @@
             "beta": false,
             "conditional_paths": [],
             "custom_fields": {},
-            "description": "Runs a language model given a specified provider. ",
+            "description": "Runs a language model given a specified provider.",
             "display_name": "Language Model",
             "documentation": "",
             "edited": false,
@@ -1933,14 +1676,39 @@
             ],
             "frozen": false,
             "icon": "brain-circuit",
+            "last_updated": "2025-09-29T16:04:51.765Z",
             "legacy": false,
+            "lf_version": "1.6.0",
             "metadata": {
+              "code_hash": "bb5f8714781b",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langchain_anthropic",
+                    "version": "0.3.14"
+                  },
+                  {
+                    "name": "langchain_google_genai",
+                    "version": "2.0.6"
+                  },
+                  {
+                    "name": "langchain_openai",
+                    "version": "0.3.23"
+                  },
+                  {
+                    "name": "lfx",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 4
+              },
               "keywords": [
                 "model",
                 "llm",
                 "language model",
                 "large language model"
-              ]
+              ],
+              "module": "lfx.components.models.language_model.LanguageModelComponent"
             },
             "minimized": false,
             "output_types": [],
@@ -1985,7 +1753,7 @@
               "api_key": {
                 "_input_type": "SecretStrInput",
                 "advanced": false,
-                "display_name": "Anthropic API Key",
+                "display_name": "OpenAI API Key",
                 "dynamic": false,
                 "info": "Model Provider API key",
                 "input_types": [],
@@ -1998,7 +1766,7 @@
                 "show": true,
                 "title_case": false,
                 "type": "str",
-                "value": "ANTHROPIC_API_KEY"
+                "value": "OPENAI_API_KEY"
               },
               "code": {
                 "advanced": true,
@@ -2051,13 +1819,25 @@
                 "info": "Select the model to use",
                 "name": "model_name",
                 "options": [
-                  "claude-opus-4-20250514",
-                  "claude-sonnet-4-20250514",
-                  "claude-3-7-sonnet-latest",
-                  "claude-3-5-sonnet-latest",
-                  "claude-3-5-haiku-latest",
-                  "claude-3-opus-latest",
-                  "claude-3-sonnet-20240229"
+                  "gpt-4o-mini",
+                  "gpt-4o",
+                  "gpt-4.1",
+                  "gpt-4.1-mini",
+                  "gpt-4.1-nano",
+                  "gpt-4-turbo",
+                  "gpt-4-turbo-preview",
+                  "gpt-4",
+                  "gpt-3.5-turbo",
+                  "gpt-5",
+                  "gpt-5-mini",
+                  "gpt-5-nano",
+                  "gpt-5-chat-latest",
+                  "o1",
+                  "o3-mini",
+                  "o3",
+                  "o3-pro",
+                  "o4-mini",
+                  "o4-mini-high"
                 ],
                 "options_metadata": [],
                 "placeholder": "",
@@ -2068,7 +1848,7 @@
                 "tool_mode": false,
                 "trace_as_metadata": true,
                 "type": "str",
-                "value": "claude-3-5-sonnet-latest"
+                "value": "gpt-4o-mini"
               },
               "provider": {
                 "_input_type": "DropdownInput",
@@ -2104,7 +1884,7 @@
                 "tool_mode": false,
                 "trace_as_metadata": true,
                 "type": "str",
-                "value": "Anthropic"
+                "value": "OpenAI"
               },
               "stream": {
                 "_input_type": "BoolInput",
@@ -2185,23 +1965,23 @@
           "type": "LanguageModelComponent"
         },
         "dragging": false,
-        "id": "LanguageModelComponent-QdlJs",
+        "id": "LanguageModelComponent-DJzkZ",
         "measured": {
           "height": 534,
           "width": 320
         },
         "position": {
-          "x": 2186.279431622904,
-          "y": 451.16763265323283
+          "x": 2174.626510909065,
+          "y": 439.5147119393939
         },
         "selected": false,
         "type": "genericNode"
       },
       {
         "data": {
-          "id": "note-BstqH",
+          "id": "note-Sm9Ca",
           "node": {
-            "description": "### 💡 Add your Anthropic API key here",
+            "description": "### 💡 Add your OpenAI API key here",
             "display_name": "",
             "documentation": "",
             "template": {
@@ -2211,7 +1991,7 @@
           "type": "note"
         },
         "dragging": false,
-        "id": "note-BstqH",
+        "id": "note-Sm9Ca",
         "measured": {
           "height": 324,
           "width": 324
@@ -2222,19 +2002,373 @@
         },
         "selected": false,
         "type": "noteNode"
+      },
+      {
+        "data": {
+          "id": "StructuredOutput-wsAT3",
+          "node": {
+            "base_classes": [
+              "Data",
+              "DataFrame"
+            ],
+            "beta": false,
+            "conditional_paths": [],
+            "custom_fields": {},
+            "description": "Uses an LLM to generate structured data. Ideal for extraction and consistency.",
+            "display_name": "Structured Output",
+            "documentation": "https://docs.langflow.org/components-processing#structured-output",
+            "edited": false,
+            "field_order": [
+              "llm",
+              "input_value",
+              "system_prompt",
+              "schema_name",
+              "output_schema"
+            ],
+            "frozen": false,
+            "icon": "braces",
+            "legacy": false,
+            "lf_version": "1.6.0",
+            "metadata": {
+              "code_hash": "9e70464cbdb6",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "pydantic",
+                    "version": "2.11.10"
+                  },
+                  {
+                    "name": "trustcall",
+                    "version": "0.0.39"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 3
+              },
+              "module": "custom_components.structured_output"
+            },
+            "minimized": false,
+            "output_types": [],
+            "outputs": [
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Structured Output",
+                "group_outputs": false,
+                "method": "build_structured_output",
+                "name": "structured_output",
+                "selected": null,
+                "tool_mode": true,
+                "types": [
+                  "Data"
+                ],
+                "value": "__UNDEFINED__"
+              },
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Structured Output",
+                "group_outputs": false,
+                "method": "build_structured_dataframe",
+                "name": "dataframe_output",
+                "selected": "DataFrame",
+                "tool_mode": true,
+                "types": [
+                  "DataFrame"
+                ],
+                "value": "__UNDEFINED__"
+              }
+            ],
+            "pinned": false,
+            "template": {
+              "_type": "Component",
+              "code": {
+                "advanced": true,
+                "dynamic": true,
+                "fileTypes": [],
+                "file_path": "",
+                "info": "",
+                "list": false,
+                "load_from_db": false,
+                "multiline": true,
+                "name": "code",
+                "password": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "code",
+                "value": "from pydantic import BaseModel, Field, create_model\nfrom trustcall import create_extractor\n\nfrom langflow.base.models.chat_result import get_chat_result\nfrom langflow.custom.custom_component.component import Component\nfrom langflow.helpers.base_model import build_model_from_schema\nfrom langflow.io import (\n    HandleInput,\n    MessageTextInput,\n    MultilineInput,\n    Output,\n    TableInput,\n)\nfrom langflow.schema.data import Data\nfrom langflow.schema.dataframe import DataFrame\nfrom langflow.schema.table import EditMode\n\n\nclass StructuredOutputComponent(Component):\n    display_name = \"Structured Output\"\n    description = \"Uses an LLM to generate structured data. Ideal for extraction and consistency.\"\n    documentation: str = \"https://docs.langflow.org/components-processing#structured-output\"\n    name = \"StructuredOutput\"\n    icon = \"braces\"\n\n    inputs = [\n        HandleInput(\n            name=\"llm\",\n            display_name=\"Language Model\",\n            info=\"The language model to use to generate the structured output.\",\n            input_types=[\"LanguageModel\"],\n            required=True,\n        ),\n        MultilineInput(\n            name=\"input_value\",\n            display_name=\"Input Message\",\n            info=\"The input message to the language model.\",\n            tool_mode=True,\n            required=True,\n        ),\n        MultilineInput(\n            name=\"system_prompt\",\n            display_name=\"Format Instructions\",\n            info=\"The instructions to the language model for formatting the output.\",\n            value=(\n                \"You are an AI that extracts structured JSON objects from unstructured text. \"\n                \"Use a predefined schema with expected types (str, int, float, bool, dict). \"\n                \"Extract ALL relevant instances that match the schema - if multiple patterns exist, capture them all. \"\n                \"Fill missing or ambiguous values with defaults: null for missing values. \"\n                \"Remove exact duplicates but keep variations that have different field values. \"\n                \"Always return valid JSON in the expected format, never throw errors. \"\n                \"If multiple objects can be extracted, return them all in the structured format.\"\n            ),\n            required=True,\n            advanced=True,\n        ),\n        MessageTextInput(\n            name=\"schema_name\",\n            display_name=\"Schema Name\",\n            info=\"Provide a name for the output data schema.\",\n            advanced=True,\n        ),\n        TableInput(\n            name=\"output_schema\",\n            display_name=\"Output Schema\",\n            info=\"Define the structure and data types for the model's output.\",\n            required=True,\n            # TODO: remove deault value\n            table_schema=[\n                {\n                    \"name\": \"name\",\n                    \"display_name\": \"Name\",\n                    \"type\": \"str\",\n                    \"description\": \"Specify the name of the output field.\",\n                    \"default\": \"field\",\n                    \"edit_mode\": EditMode.INLINE,\n                },\n                {\n                    \"name\": \"description\",\n                    \"display_name\": \"Description\",\n                    \"type\": \"str\",\n                    \"description\": \"Describe the purpose of the output field.\",\n                    \"default\": \"description of field\",\n                    \"edit_mode\": EditMode.POPOVER,\n                },\n                {\n                    \"name\": \"type\",\n                    \"display_name\": \"Type\",\n                    \"type\": \"str\",\n                    \"edit_mode\": EditMode.INLINE,\n                    \"description\": (\"Indicate the data type of the output field (e.g., str, int, float, bool, dict).\"),\n                    \"options\": [\"str\", \"int\", \"float\", \"bool\", \"dict\"],\n                    \"default\": \"str\",\n                },\n                {\n                    \"name\": \"multiple\",\n                    \"display_name\": \"As List\",\n                    \"type\": \"boolean\",\n                    \"description\": \"Set to True if this output field should be a list of the specified type.\",\n                    \"default\": \"False\",\n                    \"edit_mode\": EditMode.INLINE,\n                },\n            ],\n            value=[\n                {\n                    \"name\": \"field\",\n                    \"description\": \"description of field\",\n                    \"type\": \"str\",\n                    \"multiple\": \"False\",\n                }\n            ],\n        ),\n    ]\n\n    outputs = [\n        Output(\n            name=\"structured_output\",\n            display_name=\"Structured Output\",\n            method=\"build_structured_output\",\n        ),\n        Output(\n            name=\"dataframe_output\",\n            display_name=\"Structured Output\",\n            method=\"build_structured_dataframe\",\n        ),\n    ]\n\n    def build_structured_output_base(self):\n        schema_name = self.schema_name or \"OutputModel\"\n\n        if not hasattr(self.llm, \"with_structured_output\"):\n            msg = \"Language model does not support structured output.\"\n            raise TypeError(msg)\n        if not self.output_schema:\n            msg = \"Output schema cannot be empty\"\n            raise ValueError(msg)\n\n        output_model_ = build_model_from_schema(self.output_schema)\n\n        output_model = create_model(\n            schema_name,\n            __doc__=f\"A list of {schema_name}.\",\n            objects=(list[output_model_], Field(description=f\"A list of {schema_name}.\")),  # type: ignore[valid-type]\n        )\n\n        try:\n            llm_with_structured_output = create_extractor(self.llm, tools=[output_model])\n        except NotImplementedError as exc:\n            msg = f\"{self.llm.__class__.__name__} does not support structured output.\"\n            raise TypeError(msg) from exc\n\n        config_dict = {\n            \"run_name\": self.display_name,\n            \"project_name\": self.get_project_name(),\n            \"callbacks\": self.get_langchain_callbacks(),\n        }\n        result = get_chat_result(\n            runnable=llm_with_structured_output,\n            system_message=self.system_prompt,\n            input_value=self.input_value,\n            config=config_dict,\n        )\n\n        # OPTIMIZATION NOTE: Simplified processing based on trustcall response structure\n        # Handle non-dict responses (shouldn't happen with trustcall, but defensive)\n        if not isinstance(result, dict):\n            return result\n\n        # Extract first response and convert BaseModel to dict\n        responses = result.get(\"responses\", [])\n        if not responses:\n            return result\n\n        # Convert BaseModel to dict (creates the \"objects\" key)\n        first_response = responses[0]\n        structured_data = first_response.model_dump() if isinstance(first_response, BaseModel) else first_response\n\n        # Extract the objects array (guaranteed to exist due to our Pydantic model structure)\n        return structured_data.get(\"objects\", structured_data)\n\n    def build_structured_output(self) -> Data:\n        output = self.build_structured_output_base()\n        if not isinstance(output, list) or not output:\n            # handle empty or unexpected type case\n            msg = \"No structured output returned\"\n            raise ValueError(msg)\n        if len(output) == 1:\n            return Data(data=output[0])\n        if len(output) > 1:\n            # Multiple outputs - wrap them in a results container\n            return Data(data={\"results\": output})\n        return Data()\n\n    def build_structured_dataframe(self) -> DataFrame:\n        output = self.build_structured_output_base()\n        if not isinstance(output, list) or not output:\n            # handle empty or unexpected type case\n            msg = \"No structured output returned\"\n            raise ValueError(msg)\n        if len(output) == 1:\n            # For single dictionary, wrap in a list to create DataFrame with one row\n            return DataFrame([output[0]])\n        if len(output) > 1:\n            # Multiple outputs - convert to DataFrame directly\n            return DataFrame(output)\n        return DataFrame()\n"
+              },
+              "input_value": {
+                "_input_type": "MultilineInput",
+                "advanced": false,
+                "copy_field": false,
+                "display_name": "Input Message",
+                "dynamic": false,
+                "info": "The input message to the language model.",
+                "input_types": [
+                  "Message"
+                ],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "multiline": true,
+                "name": "input_value",
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "tool_mode": true,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": ""
+              },
+              "llm": {
+                "_input_type": "HandleInput",
+                "advanced": false,
+                "display_name": "Language Model",
+                "dynamic": false,
+                "info": "The language model to use to generate the structured output.",
+                "input_types": [
+                  "LanguageModel"
+                ],
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "llm",
+                "override_skip": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "other",
+                "value": ""
+              },
+              "output_schema": {
+                "_input_type": "TableInput",
+                "advanced": false,
+                "display_name": "Output Schema",
+                "dynamic": false,
+                "info": "Define the structure and data types for the model's output.",
+                "is_list": true,
+                "list_add_label": "Add More",
+                "name": "output_schema",
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "table_icon": "Table",
+                "table_schema": [
+                  {
+                    "default": "field",
+                    "description": "Specify the name of the output field.",
+                    "display_name": "Name",
+                    "edit_mode": "inline",
+                    "formatter": "text",
+                    "name": "name",
+                    "type": "str"
+                  },
+                  {
+                    "default": "description of field",
+                    "description": "Describe the purpose of the output field.",
+                    "display_name": "Description",
+                    "edit_mode": "popover",
+                    "formatter": "text",
+                    "name": "description",
+                    "type": "str"
+                  },
+                  {
+                    "default": "str",
+                    "description": "Indicate the data type of the output field (e.g., str, int, float, bool, dict).",
+                    "display_name": "Type",
+                    "edit_mode": "inline",
+                    "formatter": "text",
+                    "name": "type",
+                    "options": [
+                      "str",
+                      "int",
+                      "float",
+                      "bool",
+                      "dict"
+                    ],
+                    "type": "str"
+                  },
+                  {
+                    "default": "False",
+                    "description": "Set to True if this output field should be a list of the specified type.",
+                    "display_name": "As List",
+                    "edit_mode": "inline",
+                    "formatter": "text",
+                    "name": "multiple",
+                    "type": "boolean"
+                  }
+                ],
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "trigger_icon": "Table",
+                "trigger_text": "Open table",
+                "type": "table",
+                "value": [
+                  {
+                    "description": "Full name of the candidate",
+                    "multiple": "False",
+                    "name": "full_name",
+                    "type": "str"
+                  },
+                  {
+                    "description": "Email ID",
+                    "multiple": "False",
+                    "name": "email",
+                    "type": "str"
+                  },
+                  {
+                    "description": "Contact Number",
+                    "multiple": "False",
+                    "name": "phone_number",
+                    "type": "str"
+                  },
+                  {
+                    "description": "LinkedIn URL",
+                    "multiple": "False",
+                    "name": "linkedin",
+                    "type": "str"
+                  },
+                  {
+                    "description": "GitHub profile URL (if applicable)",
+                    "multiple": "False",
+                    "name": "github",
+                    "type": "str"
+                  },
+                  {
+                    "description": "Personal website or portfolio URL",
+                    "multiple": "False",
+                    "name": "portfolio",
+                    "type": "str"
+                  },
+                  {
+                    "description": "Visa/work authorization details (if applicable)",
+                    "multiple": "False",
+                    "name": "visa_status",
+                    "type": "str"
+                  },
+                  {
+                    "description": "Short professional summary or objective statement",
+                    "multiple": "False",
+                    "name": "summary",
+                    "type": "str"
+                  },
+                  {
+                    "description": "Dictionaries of experience details with following keys:\\n    \\\"job_title\\\": Job position/title,\\n\\t\\\"company_name\\\": Employer or organization\\n\\t\\\"location\\\": Job location (remote/in-office)\\n\\t\\\"start_date\\\": Start date (YYYY-MM)\\n\\t\\\"end_date\\\": End date or \\\"Present\\\"\\n\\t\\\"responsibilities\\\": List of responsibilities and tasks\\n\\t\\\"achievements\\\": List of key achievements and contributions",
+                    "multiple": "True",
+                    "name": "experience",
+                    "type": "dict"
+                  },
+                  {
+                    "description": "Dictionaries of Education details with following keys:\\n\\\"degree\\\": Degree obtained (e.g., B.Sc., M.Sc., Ph.D.),\\n\\\"field_of_study\\\": Major or specialization,\\n\\\"institution\\\": University/college name,\\n\\\"location\\\": Location of institution,\\n\\\"start_date\\\": Start date (YYYY-MM),\\n\\\"end_date\\\": Graduation/completion date (YYYY-MM),\\n\\\"gpa\\\": GPA/grade (if available),\\n\\\"relevant_courses\\\": List of relevant coursework (if applicable)",
+                    "multiple": "True",
+                    "name": "education",
+                    "type": "dict"
+                  },
+                  {
+                    "description": "Skills mentioned in the resume. Comma separated.",
+                    "multiple": "True",
+                    "name": "skills",
+                    "type": "str"
+                  },
+                  {
+                    "description": "Title and description and details of the project. Including the skills and technologies used.",
+                    "multiple": "False",
+                    "name": "projects",
+                    "type": "str"
+                  }
+                ]
+              },
+              "schema_name": {
+                "_input_type": "MessageTextInput",
+                "advanced": true,
+                "display_name": "Schema Name",
+                "dynamic": false,
+                "info": "Provide a name for the output data schema.",
+                "input_types": [
+                  "Message"
+                ],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "schema_name",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": ""
+              },
+              "system_prompt": {
+                "_input_type": "MultilineInput",
+                "advanced": true,
+                "copy_field": false,
+                "display_name": "Format Instructions",
+                "dynamic": false,
+                "info": "The instructions to the language model for formatting the output.",
+                "input_types": [
+                  "Message"
+                ],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "multiline": true,
+                "name": "system_prompt",
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": "You are an AI that extracts structured JSON objects from unstructured text. Use a predefined schema with expected types (str, int, float, bool, dict). Extract ALL relevant instances that match the schema - if multiple patterns exist, capture them all. Fill missing or ambiguous values with defaults: null for missing values. Remove exact duplicates but keep variations that have different field values. Always return valid JSON in the expected format, never throw errors. If multiple objects can be extracted, return them all in the structured format."
+              }
+            },
+            "tool_mode": false
+          },
+          "selected_output": "dataframe_output",
+          "showNode": true,
+          "type": "StructuredOutput"
+        },
+        "dragging": false,
+        "id": "StructuredOutput-wsAT3",
+        "measured": {
+          "height": 349,
+          "width": 320
+        },
+        "position": {
+          "x": 1308.5338025647359,
+          "y": 651.6998573907567
+        },
+        "selected": false,
+        "type": "genericNode"
       }
     ],
     "viewport": {
-      "x": -342.31789184604554,
-      "y": 186.2718754536295,
-      "zoom": 0.6178978805328279
+      "x": -89.9205649953526,
+      "y": 43.735261805036544,
+      "zoom": 0.5746419520979581
     }
   },
   "description": "This template transforms PDF or TXT resume documents into structured JSON, generating a portfolio website HTML code from the structured data.",
   "endpoint_name": null,
-  "id": "c36b3b7b-79e6-4158-9daa-aeef89196bd6",
+  "id": "34740f33-b354-440e-a984-fc51079578e7",
   "is_component": false,
-  "last_tested_version": "1.4.3",
+  "last_tested_version": "1.6.0",
   "name": "Portfolio Website Code Generator",
   "tags": [
     "chatbots",

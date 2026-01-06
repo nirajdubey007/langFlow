@@ -136,7 +136,19 @@
             "key": "ChatInput",
             "legacy": false,
             "lf_version": "1.3.2",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "88cc3fef8f84",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 1
+              },
+              "module": "custom_components.chat_input"
+            },
             "minimized": true,
             "output_types": [],
             "outputs": [
@@ -380,7 +392,27 @@
             "key": "ChatOutput",
             "legacy": false,
             "lf_version": "1.3.2",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "1f36a5fbc6bd",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "orjson",
+                    "version": "3.10.15"
+                  },
+                  {
+                    "name": "fastapi",
+                    "version": "0.123.0"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 3
+              },
+              "module": "custom_components.chat_output"
+            },
             "minimized": true,
             "output_types": [],
             "outputs": [
@@ -604,7 +636,23 @@
             "icon": "TavilyIcon",
             "legacy": false,
             "lf_version": "1.3.2",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "4c76fb76d395",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "httpx",
+                    "version": "0.28.1"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 2
+              },
+              "module": "custom_components.tavily_search_api"
+            },
             "minimized": false,
             "output_types": [],
             "outputs": [
@@ -1002,7 +1050,23 @@
             "icon": "AgentQL",
             "legacy": false,
             "lf_version": "1.3.2",
-            "metadata": {},
+            "metadata": {
+              "code_hash": "c88b73d7a17d",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "httpx",
+                    "version": "0.28.1"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 2
+              },
+              "module": "custom_components.extract_web_data"
+            },
             "minimized": false,
             "output_types": [],
             "outputs": [
@@ -1474,7 +1538,27 @@
             "icon": "bot",
             "key": "Agent",
             "legacy": false,
-            "metadata": {},
+            "metadata": {
+              "code_hash": "6e76cf95a2a2",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langchain_core",
+                    "version": "0.3.80"
+                  },
+                  {
+                    "name": "pydantic",
+                    "version": "2.11.10"
+                  },
+                  {
+                    "name": "langflow",
+                    "version": null
+                  }
+                ],
+                "total_dependencies": 3
+              },
+              "module": "custom_components.agent"
+            },
             "minimized": false,
             "output_types": [],
             "outputs": [
@@ -1577,16 +1661,25 @@
                   },
                   {
                     "icon": "OpenAI"
+                  },
+                  {
+                    "icon": "WatsonxAI"
+                  },
+                  {
+                    "icon": "Ollama"
                   }
                 ],
+                "override_skip": false,
                 "placeholder": "",
                 "real_time_refresh": true,
+                "refresh_button": false,
                 "required": false,
                 "show": true,
                 "title_case": false,
                 "toggle": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": true,
                 "type": "str",
                 "value": "OpenAI"
               },
@@ -1719,12 +1812,14 @@
                 "list": false,
                 "list_add_label": "Add More",
                 "name": "max_retries",
+                "override_skip": false,
                 "placeholder": "",
                 "required": false,
                 "show": true,
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": true,
                 "type": "int",
                 "value": 5
               },
@@ -1737,10 +1832,11 @@
                 "list": false,
                 "list_add_label": "Add More",
                 "name": "max_tokens",
+                "override_skip": false,
                 "placeholder": "",
                 "range_spec": {
-                  "max": 128000,
-                  "min": 0,
+                  "max": 128000.0,
+                  "min": 0.0,
                   "step": 0.1,
                   "step_type": "float"
                 },
@@ -1749,6 +1845,7 @@
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": true,
                 "type": "int",
                 "value": ""
               },
@@ -1761,12 +1858,14 @@
                 "list": false,
                 "list_add_label": "Add More",
                 "name": "model_kwargs",
+                "override_skip": false,
                 "placeholder": "",
                 "required": false,
                 "show": true,
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_input": true,
+                "track_in_telemetry": false,
                 "type": "dict",
                 "value": {}
               },
@@ -1777,6 +1876,7 @@
                 "dialog_inputs": {},
                 "display_name": "Model Name",
                 "dynamic": false,
+                "external_options": {},
                 "info": "To see the model names, first choose a provider. Then, enter your API key and click the refresh button next to the model name.",
                 "name": "model_name",
                 "options": [
@@ -1789,6 +1889,7 @@
                   "gpt-4-turbo-preview",
                   "gpt-4",
                   "gpt-3.5-turbo",
+                  "gpt-5.1",
                   "gpt-5",
                   "gpt-5-mini",
                   "gpt-5-nano",
@@ -1801,6 +1902,7 @@
                   "o4-mini-high"
                 ],
                 "options_metadata": [],
+                "override_skip": false,
                 "placeholder": "",
                 "real_time_refresh": false,
                 "required": false,
@@ -1809,8 +1911,9 @@
                 "toggle": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": true,
                 "type": "str",
-                "value": "gpt-4.1"
+                "value": "gpt-4o-mini"
               },
               "n_messages": {
                 "_input_type": "IntInput",
@@ -1840,12 +1943,14 @@
                 "list_add_label": "Add More",
                 "load_from_db": false,
                 "name": "openai_api_base",
+                "override_skip": false,
                 "placeholder": "",
                 "required": false,
                 "show": true,
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": false,
                 "type": "str",
                 "value": ""
               },
@@ -1862,69 +1967,47 @@
                 "required": false,
                 "show": true,
                 "table_icon": "Table",
-                "table_schema": {
-                  "columns": [
-                    {
-                      "default": "field",
-                      "description": "Specify the name of the output field.",
-                      "disable_edit": false,
-                      "display_name": "Name",
-                      "edit_mode": "inline",
-                      "filterable": true,
-                      "formatter": "text",
-                      "hidden": false,
-                      "name": "name",
-                      "sortable": true,
-                      "type": "str"
-                    },
-                    {
-                      "default": "description of field",
-                      "description": "Describe the purpose of the output field.",
-                      "disable_edit": false,
-                      "display_name": "Description",
-                      "edit_mode": "popover",
-                      "filterable": true,
-                      "formatter": "text",
-                      "hidden": false,
-                      "name": "description",
-                      "sortable": true,
-                      "type": "str"
-                    },
-                    {
-                      "default": "str",
-                      "description": "Indicate the data type of the output field (e.g., str, int, float, bool, dict).",
-                      "disable_edit": false,
-                      "display_name": "Type",
-                      "edit_mode": "inline",
-                      "filterable": true,
-                      "formatter": "text",
-                      "hidden": false,
-                      "name": "type",
-                      "options": [
-                        "str",
-                        "int",
-                        "float",
-                        "bool",
-                        "dict"
-                      ],
-                      "sortable": true,
-                      "type": "str"
-                    },
-                    {
-                      "default": false,
-                      "description": "Set to True if this output field should be a list of the specified type.",
-                      "disable_edit": false,
-                      "display_name": "As List",
-                      "edit_mode": "inline",
-                      "filterable": true,
-                      "formatter": "boolean",
-                      "hidden": false,
-                      "name": "multiple",
-                      "sortable": true,
-                      "type": "boolean"
-                    }
-                  ]
-                },
+                "table_schema": [
+                  {
+                    "default": "field",
+                    "description": "Specify the name of the output field.",
+                    "display_name": "Name",
+                    "edit_mode": "inline",
+                    "name": "name",
+                    "type": "str"
+                  },
+                  {
+                    "default": "description of field",
+                    "description": "Describe the purpose of the output field.",
+                    "display_name": "Description",
+                    "edit_mode": "popover",
+                    "name": "description",
+                    "type": "str"
+                  },
+                  {
+                    "default": "str",
+                    "description": "Indicate the data type of the output field (e.g., str, int, float, bool, dict).",
+                    "display_name": "Type",
+                    "edit_mode": "inline",
+                    "name": "type",
+                    "options": [
+                      "str",
+                      "int",
+                      "float",
+                      "bool",
+                      "dict"
+                    ],
+                    "type": "str"
+                  },
+                  {
+                    "default": "False",
+                    "description": "Set to True if this output field should be a list of the specified type.",
+                    "display_name": "As List",
+                    "edit_mode": "inline",
+                    "name": "multiple",
+                    "type": "boolean"
+                  }
+                ],
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
@@ -1942,12 +2025,14 @@
                 "list": false,
                 "list_add_label": "Add More",
                 "name": "seed",
+                "override_skip": false,
                 "placeholder": "",
                 "required": false,
                 "show": true,
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": true,
                 "type": "int",
                 "value": 1
               },
@@ -1987,10 +2072,11 @@
                 "min_label": "",
                 "min_label_icon": "",
                 "name": "temperature",
+                "override_skip": false,
                 "placeholder": "",
                 "range_spec": {
-                  "max": 1,
-                  "min": 0,
+                  "max": 1.0,
+                  "min": 0.0,
                   "step": 0.01,
                   "step_type": "float"
                 },
@@ -2001,6 +2087,7 @@
                 "slider_input": false,
                 "title_case": false,
                 "tool_mode": false,
+                "track_in_telemetry": false,
                 "type": "slider",
                 "value": 0.1
               },
@@ -2013,12 +2100,14 @@
                 "list": false,
                 "list_add_label": "Add More",
                 "name": "timeout",
+                "override_skip": false,
                 "placeholder": "",
                 "required": false,
                 "show": true,
                 "title_case": false,
                 "tool_mode": false,
                 "trace_as_metadata": true,
+                "track_in_telemetry": true,
                 "type": "int",
                 "value": 700
               },

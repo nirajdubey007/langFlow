@@ -1,11 +1,11 @@
 import { create } from "zustand";
-import { getDiscordCount, getRepoStars } from "../controllers/API";
+// API imports removed - no longer fetching Discord/GitHub data
 import type { DarkStoreType } from "../types/zustand/dark";
 
 const startedStars = Number(window.localStorage.getItem("githubStars")) ?? 0;
 
 export const useDarkStore = create<DarkStoreType>((set, get) => ({
-  dark: true, // Always dark mode
+  dark: true, // Always dark theme
   stars: startedStars,
   version: "",
   latestVersion: "",
@@ -13,7 +13,7 @@ export const useDarkStore = create<DarkStoreType>((set, get) => ({
     set(() => ({ latestVersion: v }));
   },
   setDark: (dark) => {
-    // Force dark mode - ignore any attempts to change it
+    // Always set to dark theme, ignore the input
     set(() => ({ dark: true }));
     window.localStorage.setItem("isDark", "true");
   },
@@ -21,34 +21,12 @@ export const useDarkStore = create<DarkStoreType>((set, get) => ({
     set(() => ({ version: v }));
   },
   refreshStars: () => {
-    if (import.meta.env.CI) {
-      window.localStorage.setItem("githubStars", "0");
-      set(() => ({ stars: 0, lastUpdated: new Date() }));
+    // API calls disabled - no longer fetching GitHub stars
       return;
-    }
-    const lastUpdated = window.localStorage.getItem("githubStarsLastUpdated");
-    let diff = 0;
-    // check if lastUpdated actually exists
-    if (lastUpdated !== null) {
-      diff = Math.abs(new Date().getTime() - new Date(lastUpdated).getTime());
-    }
-
-    // if lastUpdated is null or the difference is greater than 2 hours
-    if (lastUpdated === null || diff > 7200000) {
-      getRepoStars("langflow-ai", "langflow").then((res) => {
-        window.localStorage.setItem("githubStars", res?.toString() ?? "0");
-        window.localStorage.setItem(
-          "githubStarsLastUpdated",
-          new Date().toString(),
-        );
-        set(() => ({ stars: res, lastUpdated: new Date() }));
-      });
-    }
   },
   discordCount: 0,
   refreshDiscordCount: () => {
-    getDiscordCount().then((res) => {
-      set(() => ({ discordCount: res }));
-    });
+    // API calls disabled - no longer fetching Discord count
+    return;
   },
 }));
