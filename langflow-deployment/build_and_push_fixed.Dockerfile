@@ -6,7 +6,7 @@
 # Used to build deps + create our virtual environment
 ################################
 
-FROM --platform=linux/amd64 ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
 
 # Install the project into `/app`
 WORKDIR /app
@@ -22,13 +22,17 @@ ENV RUSTFLAGS='--cfg reqwest_unstable'
 
 RUN apt-get update && apt-get upgrade -y && apt-get install --no-install-recommends -y build-essential git npm gcc && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Copy files first (bind mounts don't work well in CI/CD)
+COPY ./uv.lock /app/uv.lock
+COPY ./README.md /app/README.md
+COPY ./pyproject.toml /app/pyproject.toml
+COPY ./src/backend/base/README.md /app/src/backend/base/README.md
+COPY ./src/backend/base/uv.lock /app/src/backend/base/uv.lock
+COPY ./src/backend/base/pyproject.toml /app/src/backend/base/pyproject.toml
+COPY ./src/lfx/README.md /app/src/lfx/README.md
+COPY ./src/lfx/pyproject.toml /app/src/lfx/pyproject.toml
+
 RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=README.md,target=README.md \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    --mount=type=bind,source=src/backend/base/README.md,target=src/backend/base/README.md \
-    --mount=type=bind,source=src/backend/base/uv.lock,target=src/backend/base/uv.lock \
-    --mount=type=bind,source=src/backend/base/pyproject.toml,target=src/backend/base/pyproject.toml \
     uv sync --frozen --no-install-project --no-editable --extra postgresql
 
 COPY ./src /app/src
@@ -50,7 +54,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 # RUNTIME
 # Setup user, utilities and copy the virtual environment only
 ################################
-FROM --platform=linux/amd64 python:3.12.3-slim AS runtime
+FROM python:3.12.3-slim AS runtime
 
 # Install runtime dependencies in separate steps for better error handling
 RUN apt-get update && \
