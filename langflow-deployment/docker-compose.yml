@@ -2,8 +2,14 @@ version: '3.8'
 
 services:
   langflow:
-    image: cera123/langflow:latest
-    pull_policy: always
+    # Use your Docker Hub username or build locally
+    # Option 1: Use pre-built image from Docker Hub (built by GitHub Actions)
+    image: ${DOCKER_USERNAME:-nirajdubey007}/langflow:latest
+    # Option 2: Build locally (uncomment below and comment image line)
+    # build:
+    #   context: ..
+    #   dockerfile: Dockerfile
+    pull_policy: if_not_present
     container_name: langflow-app
     restart: unless-stopped
     ports:
@@ -61,7 +67,8 @@ services:
       - "5432:5432"
     volumes:
       - langflow-postgres:/var/lib/postgresql/data
-      - ../docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+      # Uncomment if you have init.sql file
+      # - ../docker/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U langflow -d langflow"]
       interval: 10s
