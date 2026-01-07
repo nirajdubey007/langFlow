@@ -54,10 +54,11 @@
      
     # Copy langflow source into /app/langflow (we will pip install from source)
     COPY src/backend/base/langflow /app/langflow
-     
-    # Install the langflow package (from source). This will create an egg-link in site-packages
-    # but the actual package files are in /app/langflow (which we will own). Install other deps too.
-    RUN pip install --no-cache-dir /app/langflow
+
+    # Install dependencies first from pyproject.toml, then install langflow package
+    # This ensures all dependencies are available before installing langflow
+    RUN pip install --no-cache-dir -e ./src/backend/base[postgresql] || \
+        (cd ./src/backend/base && pip install --no-cache-dir -e .[postgresql])
      
     # Copy frontend build from frontend-builder into the package frontend folder
     COPY --from=frontend-builder /work/frontend/build /app/langflow/frontend

@@ -102,7 +102,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
+          file: ./langflow-deployment/build_and_push_fixed.Dockerfile
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME || 'cera123' }}/langflow:latest
