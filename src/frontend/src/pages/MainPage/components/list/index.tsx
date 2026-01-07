@@ -110,9 +110,11 @@ const ListComponent = ({
         draggable
         onDragStart={onDragStart}
         onClick={handleClick}
-        className={`flex flex-row bg-background ${
-          isComponent ? "cursor-default" : "cursor-pointer"
-        } group justify-between rounded-lg border-none px-4 py-3 shadow-none hover:bg-muted`}
+        className={cn(
+          "flex flex-row bg-background group justify-between rounded-lg border-none px-4 py-3 shadow-none",
+          isComponent ? "cursor-default" : "cursor-pointer",
+          selected ? "bg-primary/10 hover:bg-primary/15" : "hover:bg-muted"
+        )}
         data-testid="list-card"
       >
         <div

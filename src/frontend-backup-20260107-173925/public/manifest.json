@@ -1,0 +1,10 @@
+{
+  "name": "Automate",
+  "short_name": "Automate",
+  "description": "Automate is a low-code builder that makes it easier to build powerful AIs that can use any API, model, or database.",
+  "icons": [],
+  "categories": ["developer", "productivity", "utilities"],
+  "screenshots": [],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import MCPLangflow from "@/assets/MCPLangflow.png";
 import ForwardedIconComponent from "@/components/common/genericIconComponent";
 import { Button } from "@/components/ui/button";
 import { useCustomNavigate } from "@/customization/hooks/use-custom-navigate";
@@ -21,9 +22,7 @@ export const MCPServerNotice: FC<{
           <div className="font-mono text-sm text-muted-foreground">New</div>
           <div className="">Projects as MCP Servers</div>
         </div>
-        <div className="flex items-center justify-center rounded-xl bg-muted p-8">
-          <ForwardedIconComponent name="Bot" className="h-16 w-16 text-primary" />
-        </div>
+        <img src={MCPLangflow} alt="MCP Notice Modal" className="rounded-xl" />
         <p className="text-sm text-secondary-foreground">
           Expose flows as tools from clients like Cursor or Claude.
         </p>

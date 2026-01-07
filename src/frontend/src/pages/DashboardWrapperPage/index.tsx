@@ -7,7 +7,7 @@ export function DashboardWrapperPage() {
 
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden">
-      {/* Navbar hidden */}
+      {/* Navbar hidden per customization */}
       {/* <AppHeader /> */}
       <div className="flex w-full flex-1 flex-row overflow-hidden">
         <Outlet />

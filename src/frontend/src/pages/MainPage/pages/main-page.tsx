@@ -56,7 +56,10 @@ export default function CollectionPage(): JSX.Element {
 
   return (
     <SidebarProvider width="280px">
-      {flows && examples && folders && (
+      {flows &&
+        examples &&
+        folders &&
+        (flows?.length !== examples?.length || folders?.length > 1) && (
           <SideBarFoldersButtonsComponent
             handleChangeFolder={(id: string) => {
               navigate(`all/folder/${id}`);

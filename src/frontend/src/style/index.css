@@ -461,19 +461,12 @@
     --red-foreground: 0 72.2% 50.6%;
     --indigo-foreground: 234.5 89.5% 73.9%;
   }
-}
 
-/* Force background color to #01051f everywhere */
-html.dark,
-html.dark body,
-.dark #body,
-.dark #root {
-  background-color: #01051f !important;
-}
-
-/* Ensure main app containers use consistent background */
-.dark main:not([class*="bg-"]),
-.dark .flex.h-screen:not([class*="bg-"]),
-.dark [class*="overflow-hidden"]:not([class*="bg-"]) {
-  background-color: #01051f !important;
+  /* Force dark mode background color */
+  html.dark,
+  html.dark body,
+  html.dark #root,
+  html.dark main {
+    background-color: #01051f !important;
+  }
 }

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// Logo removed
+import langflowLogo from "@/assets/LangflowLogoColor.svg";
 import { handleOnNewValueType } from "@/CustomNodes/hooks/use-handle-new-value";
 import { useGetSystemMessageGenQuery } from "@/controllers/API/queries/assistant";
 import { useGetFlowId } from "@/modals/IOModal/hooks/useGetFlowId";
 import useAssistantManagerStore from "@/stores/assistantManagerStore";
 import { useFolderStore } from "@/stores/foldersStore";
 import { targetHandleType } from "@/types/flow";
-// Icon component removed
+import ForwardedIconComponent from "../genericIconComponent";
 
 interface AssistantButtonProps {
   type: "field" | "flow" | "project" | "header";
@@ -144,9 +144,18 @@ export const AssistantButton: React.FC<AssistantButtonProps> = ({
         className={getButtonClassName()}
       >
         {isFetching ? (
-          <div className="animate-spin w-3.5 h-3.5 text-primary cursor-not-allowed">⟳</div>
+          <ForwardedIconComponent
+            name={"Loader2"}
+            className={
+              "animate-spin w-3.5 h-3.5 text-primary cursor-not-allowed"
+            }
+          />
         ) : (
-          <div className={getIconClassName()}>🤖</div>
+          <img
+            src={langflowLogo}
+            alt="Langflow logo"
+            className={getIconClassName()}
+          />
         )}
       </button>
       {clicked && type === "field" && (
