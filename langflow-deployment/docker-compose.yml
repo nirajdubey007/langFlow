@@ -4,7 +4,7 @@ services:
   langflow:
     # Use your Docker Hub username or build locally
     # Option 1: Use pre-built image from Docker Hub (built by GitHub Actions)
-    image: ${DOCKER_USERNAME:-nirajdubey007}/langflow:latest
+    image: ${DOCKER_USERNAME:-cera123}/langflow:latest
     # Option 2: Build locally (uncomment below and comment image line)
     # build:
     #   context: ..
