@@ -8,6 +8,7 @@ on:
       - master
     paths:
       - 'Dockerfile'
+      - 'langflow-deployment/**'
       - 'src/**'
       - 'pyproject.toml'
       - 'uv.lock'
