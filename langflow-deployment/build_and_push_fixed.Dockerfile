@@ -6,7 +6,7 @@
 # Used to build deps + create our virtual environment
 ################################
 
-FROM --platform=linux/amd64 ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
 
 # Install the project into `/app`
 WORKDIR /app
@@ -33,6 +33,7 @@ COPY ./src/lfx/README.md /app/src/lfx/README.md
 COPY ./src/lfx/pyproject.toml /app/src/lfx/pyproject.toml
 
 RUN --mount=type=cache,target=/root/.cache/uv \
+    RUSTFLAGS='--cfg reqwest_unstable' \
     uv sync --frozen --no-install-project --no-editable --extra postgresql
 
 COPY ./src /app/src
@@ -40,7 +41,10 @@ COPY ./src /app/src
 COPY src/frontend /tmp/src/frontend
 WORKDIR /tmp/src/frontend
 RUN --mount=type=cache,target=/root/.npm \
-    npm ci && npm run build && cp -r build /app/src/backend/base/langflow/frontend && rm -rf /tmp/src/frontend
+    npm ci \
+    && ESBUILD_BINARY_PATH="" NODE_OPTIONS="--max-old-space-size=12288" JOBS=1 npm run build \
+    && cp -r build /app/src/backend/base/langflow/frontend \
+    && rm -rf /tmp/src/frontend
 
 WORKDIR /app
 COPY ./pyproject.toml /app/pyproject.toml
@@ -48,13 +52,14 @@ COPY ./uv.lock /app/uv.lock
 COPY ./README.md /app/README.md
 
 RUN --mount=type=cache,target=/root/.cache/uv \
+    RUSTFLAGS='--cfg reqwest_unstable' \
     uv sync --frozen --no-editable --extra postgresql
 
 ################################
 # RUNTIME
 # Setup user, utilities and copy the virtual environment only
 ################################
-FROM --platform=linux/amd64 python:3.12.3-slim AS runtime
+FROM python:3.12.3-slim AS runtime
 
 # Install runtime dependencies in separate steps for better error handling
 RUN apt-get update && \
