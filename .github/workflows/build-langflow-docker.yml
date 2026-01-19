@@ -6,6 +6,7 @@ on:
     branches:
       - main
       - master
+      - stable-build
     paths:
       - 'langflow-deployment/build_and_push_fixed.Dockerfile'
       - 'src/**'
